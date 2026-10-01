@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>우리 순 전용 웹앱</title>
+  <!-- LZ-String Library for URL Decompression -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #334155;
+    }
+    .loading-card {
+      text-align: center;
+      background: white;
+      padding: 32px 24px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      max-width: 360px;
+      width: 90%;
+    }
+    .spinner {
+      width: 44px;
+      height: 44px;
+      border: 4px solid #e2e8f0;
+      border-top-color: #2d5a43;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h2 { font-size: 17px; color: #1e293b; margin: 0 0 8px 0; }
+    p { font-size: 13.5px; color: #64748b; margin: 0; line-height: 1.5; }
+    .error-box { color: #dc2626; display: none; }
+  </style>
+</head>
+<body>
+
+<div class="loading-card" id="loader">
+  <div class="spinner"></div>
+  <h2>우리 순 케어노트를 여는 중...</h2>
+  <p>스마트폰 맞춤 화면으로 1초 만에 연결됩니다.</p>
+  <div class="error-box" id="errorBox"></div>
+</div>
+
+<script>
+  (function() {
+    function loadApp() {
+      try {
+        const hash = window.location.hash.substring(1);
+        if (!hash) {
+          showError('앱 데이터가 없습니다. 앱 생성기에서 생성된 올바른 링크를 열어주세요.');
+          return;
+        }
+
+        const params = new URLSearchParams(hash);
+        let rawCode = '';
+
+        if (params.has('c')) {
+          // LZ-String compressed code
+          const compressed = params.get('c');
+          if (window.LZString) {
+            rawCode = LZString.decompressFromEncodedURIComponent(compressed);
+          } else {
+            showError('압축 해제 라이브러리를 불러오지 못했습니다. 네트워크를 확인해 주세요.');
+            return;
+          }
+        } else if (params.has('code')) {
+          // Raw or Base64 code fallback
+          rawCode = decodeURIComponent(escape(atob(params.get('code'))));
+        }
+
+        if (!rawCode || rawCode.trim().length === 0) {
+          showError('코드 복원에 실패했습니다. 링크가 손상되었는지 확인해 주세요.');
+          return;
+        }
+
+        // Replace whole document with the pure user webapp
+        document.open();
+        document.write(rawCode);
+        document.close();
+
+      } catch (err) {
+        showError('앱 실행 중 오류가 발생했습니다: ' + err.message);
+      }
+    }
+
+    function showError(msg) {
+      document.querySelector('.spinner').style.display = 'none';
+      document.querySelector('h2').innerText = '⚠️ 안내';
+      document.querySelector('p').style.display = 'none';
+      const errBox = document.getElementById('errorBox');
+      errBox.innerText = msg;
+      errBox.style.display = 'block';
+    }
+
+    // Run when ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadApp);
+    } else {
+      loadApp();
+    }
+  })();
+</script>
+
+</body>
+</html>

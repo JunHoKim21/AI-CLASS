@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>순장님 전용 1초 웹앱 생성기 | 사랑의교회 AI 미션그룹</title>
+  <!-- LZ-String & QRCode.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    :root {
+      --primary: #2d5a43;
+      --primary-dark: #1b3d2d;
+      --accent: #d97706;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: var(--primary-dark);
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    p.subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Benefits Box */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+    }
+
+    .benefit-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .benefit-item span {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    /* Main Card */
+    .card {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      margin-bottom: 24px;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 750;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-num {
+      background: var(--primary);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #334155;
+      background: #f8fafc;
+      resize: vertical;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus {
+      border-color: var(--primary);
+      background: white;
+    }
+
+    .btn-create {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 750;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 4px 12px rgba(45, 90, 67, 0.25);
+    }
+
+    .btn-create:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Result Section */
+    #resultSection {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-box {
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 16px;
+      padding: 22px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .result-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #166534;
+      margin-bottom: 6px;
+    }
+
+    .result-desc {
+      font-size: 13.5px;
+      color: #374151;
+      margin-bottom: 18px;
+    }
+
+    .qr-container {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .qr-desc {
+      font-size: 13px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .btn-action {
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-copy-url {
+      background: #2563eb;
+      color: white;
+    }
+    .btn-copy-url:hover { background: #1d4ed8; }
+
+    .btn-open-preview {
+      background: white;
+      color: #1e293b;
+      border: 1.5px solid #cbd5e1;
+    }
+    .btn-open-preview:hover { background: #f8fafc; border-color: #94a3b8; }
+
+    .btn-download-file {
+      background: #0f766e;
+      color: white;
+    }
+    .btn-download-file:hover { background: #115e59; }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10b981;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    .back-nav {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 13.5px;
+    }
+    .back-nav a {
+      color: var(--primary);
+      text-decoration: underline;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="badge">사랑의교회 여직장인 순장반 특별 도구</div>
+    <h1>📱 순장님 전용 1초 웹앱 생성기</h1>
+    <p class="subtitle">구글 경고창 0%, AI Studio 로그인 0%! 나만의 100% 순수 독립 앱을 만듭니다.</p>
+  </header>
+
+  <!-- 3대 혜택 -->
+  <div class="benefits-grid">
+    <div class="benefit-item">
+      <span>🛡️</span>
+      구글 경고창 0%<br>(무서운 영문 창 안 뜸)
+    </div>
+    <div class="benefit-item">
+      <span>📱</span>
+      진짜 앱처럼 설치<br>(홈 화면에 나만의 앱 깔림)
+    </div>
+    <div class="benefit-item">
+      <span>💾</span>
+      순원 출석 100% 저장<br>(새로고침해도 보존)
+    </div>
+  </div>
+
+  <!-- Builder Card -->
+  <div class="card">
+    <div class="step-title">
+      <span class="step-num">1</span>
+      <span>Google AI Studio 우측 상단의 <strong>&lt;Code&gt;</strong> 버튼을 눌러 복사하세요</span>
+    </div>
+    <div class="step-title" style="margin-top: 14px;">
+      <span class="step-num">2</span>
+      <span>아래 창을 마우스로 클릭하고 붙여넣기(<strong>Ctrl + V</strong>) 하세요</span>
+    </div>
+
+    <textarea id="codeSource" placeholder="여기에 AI Studio에서 복사한 HTML 코드를 붙여넣으세요... (<!DOCTYPE html>...)" onpaste="autoFormatCode()"></textarea>
+
+    <button class="btn-create" onclick="generateStandaloneApp()">
+      ✨ 1초 만에 구글 마크 없는 나만의 순수 앱 생성하기 ➔
+    </button>
+
+    <!-- Result Area -->
+    <div id="resultSection">
+      <div class="result-box">
+        <div class="result-title">🎉 축하합니다! 나만의 순수 웹앱이 탄생했습니다!</div>
+        <div class="result-desc">
+          구글 경고창과 상단 바가 완전히 제거된 순수한 우리 순 전용 앱입니다.<br>
+          스마트폰으로 링크를 열고 <strong>[홈 화면에 추가]</strong>를 누르시면 진짜 앱으로 설치됩니다.
+        </div>
+
+        <!-- QR Code -->
+        <div class="qr-container">
+          <div id="qrcode"></div>
+          <div class="qr-desc">▲ 스마트폰 카메라로 비추면 1초 만에 앱 오픈!</div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button class="btn-action btn-copy-url" onclick="copyAppUrl()">
+            📋 카톡 공유용 웹앱 링크 복사하기
+          </button>
+          <a id="btnPreview" href="#" target="_blank" class="btn-action btn-open-preview">
+            🚀 PC에서 새 창으로 바로 열어보기 ↗
+          </a>
+          <button class="btn-action btn-download-file" onclick="downloadHtmlFile()">
+            💾 순수 HTML 파일로 내 컴퓨터에 저장 (.html)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-nav">
+    <a href="index.html">⬅ 수강생 실습 페이지 (index.html)로 돌아가기</a>
+  </div>
+
+</div>
+
+<!-- Toast Popup -->
+<div id="toast">📋 링크가 복사되었습니다! 카톡에 붙여넣으세요.</div>
+
+<script>
+  let generatedUrl = '';
+  let lastHtmlCode = '';
+
+  function autoFormatCode() {
+    setTimeout(() => {
+      const code = document.getElementById('codeSource').value.trim();
+      if (code.length > 50) {
+        showToast('✔ 코드가 입력되었습니다. 아래 [앱 생성하기] 버튼을 누르세요!');
+      }
+    }, 100);
+  }
+
+  function generateStandaloneApp() {
+    const rawCode = document.getElementById('codeSource').value.trim();
+    if (!rawCode) {
+      alert('AI Studio에서 복사한 코드를 먼저 붙여넣어 주세요!');
+      document.getElementById('codeSource').focus();
+      return;
+    }
+
+    lastHtmlCode = rawCode;
+
+    try {
+      // 1. Compress with LZ-String
+      const compressed = LZString.compressToEncodedURIComponent(rawCode);
+      
+      // 2. Build URL to view.html
+      const currentOrigin = window.location.origin;
+      let pathname = window.location.pathname;
+      pathname = pathname.substring(0, pathname.lastIndexOf('/') + 1);
+
+      generatedUrl = `${currentOrigin}${pathname}view.html#c=${compressed}`;
+
+      // 3. Render QR Code
+      const qrEl = document.getElementById('qrcode');
+      qrEl.innerHTML = '';
+      new QRCode(qrEl, {
+        text: generatedUrl,
+        width: 170,
+        height: 170,
+        colorDark: "#1b3d2d",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+
+      // 4. Update preview button
+      document.getElementById('btnPreview').href = generatedUrl;
+
+      // 5. Show result section
+      const resSection = document.getElementById('resultSection');
+      resSection.style.display = 'block';
+      resSection.scrollIntoView({ behavior: 'smooth' });
+
+      showToast('🎉 나만의 순수 웹앱 링크와 QR 코드가 생성되었습니다!');
+
+    } catch (err) {
+      alert('앱 생성 중 오류가 발생했습니다: ' + err.message);
+    }
+  }
+
+  function copyAppUrl() {
+    if (!generatedUrl) return;
+    navigator.clipboard.writeText(generatedUrl).then(() => {
+      showToast('📋 링크 복사 완료! 카톡 나와의 채팅방에 붙여넣으세요.');
+    }).catch(() => {
+      alert('복사에 실패했습니다. 주소창을 복사해 주세요.');
+    });
+  }
+
+  function downloadHtmlFile() {
+    if (!lastHtmlCode) return;
+    const blob = new Blob([lastHtmlCode], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '우리순_스마트_케어노트.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('💾 HTML 파일이 컴퓨터에 다운로드되었습니다!');
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.classList.add('show');
+    setTimeout(() => { toast.classList.remove('show'); }, 3000);
+  }
+</script>
+
+</body>
+</html>
