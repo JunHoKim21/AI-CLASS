@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>여직장인 순장반 Google AI Studio 바이브 코딩 강의안 (강사용 종합 가이드)</title>
+  <title>우리 순 전용 웹앱 만들기 - 수강생 실습 & 화면 설명 가이드</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -37,11 +37,11 @@
       background-color: var(--bg);
       color: var(--text-main);
       line-height: 1.6;
-      padding: 32px 16px;
+      padding: 24px 16px;
     }
 
     .container {
-      max-width: 1040px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
@@ -49,482 +49,688 @@
     header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: white;
-      padding: 38px 32px;
-      border-radius: 20px;
-      margin-bottom: 28px;
-      box-shadow: 0 10px 25px -5px rgba(45, 90, 67, 0.2);
+      padding: 30px 24px;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 20px -5px rgba(45, 90, 67, 0.2);
+      text-align: center;
     }
 
     .header-badge {
       display: inline-block;
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(8px);
-      padding: 5px 14px;
+      padding: 4px 12px;
       border-radius: 9999px;
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 14px;
-      letter-spacing: 0.5px;
-    }
-
-    header h1 {
-      font-size: 27px;
-      font-weight: 800;
-      line-height: 1.35;
       margin-bottom: 10px;
     }
 
+    header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+
     header p {
-      font-size: 15px;
+      font-size: 14px;
       opacity: 0.92;
-      font-weight: 400;
-    }
-
-    /* Meta Info Grid */
-    .meta-card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 22px;
-      border: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-bottom: 28px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    }
-
-    .meta-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .meta-label {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-weight: 600;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .meta-value {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: var(--text-main);
     }
 
     .fill-box {
       display: inline-block;
       background: var(--highlight);
-      padding: 2px 8px;
-      border-radius: 6px;
+      padding: 2px 6px;
+      border-radius: 4px;
       border: 1px dashed #ca8a04;
       color: #854d0e;
       font-weight: 700;
-      font-size: 13.5px;
+      font-size: 13px;
     }
 
-    /* Navigation Bar */
-    .toc-bar {
-      position: sticky;
-      top: 16px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 10px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
+    /* Main Tab Navigation */
+    .main-tabs {
       display: flex;
       gap: 8px;
-      overflow-x: auto;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
+      background: #e2e8f0;
+      padding: 6px;
+      border-radius: 14px;
+      position: sticky;
+      top: 12px;
       z-index: 100;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
 
-    .toc-link {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 7px 11px;
-      border-radius: 8px;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-
-    .toc-link:hover, .toc-link.active {
-      background: var(--primary);
-      color: white;
-    }
-
-    /* Section Styling */
-    section {
-      background: var(--card-bg);
-      border-radius: 18px;
-      padding: 30px;
-      margin-bottom: 28px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
-    }
-
-    section h2 {
-      font-size: 20px;
+    .tab-btn {
+      flex: 1;
+      padding: 13px 16px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14.5px;
       font-weight: 750;
-      color: var(--primary-dark);
-      margin-bottom: 18px;
+      cursor: pointer;
+      background: transparent;
+      color: #475569;
+      transition: all 0.2s ease;
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--primary-light);
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
     }
 
-    section h3 {
-      font-size: 16px;
-      font-weight: 700;
+    .tab-btn.active {
+      background: white;
       color: var(--primary-dark);
-      margin-top: 20px;
-      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.09);
     }
 
-    /* Target Cards */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
+    .tab-content {
+      display: none;
     }
 
-    .goal-card {
-      background: var(--primary-light);
-      padding: 18px;
-      border-radius: 12px;
-      border-left: 4px solid var(--primary);
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
     }
 
-    .goal-card h4 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 6px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .goal-card p {
-      font-size: 13.5px;
-      color: #374151;
-      line-height: 1.55;
-    }
-
-    /* Timetable Table */
-    .table-wrapper {
-      overflow-x: auto;
-      margin-top: 16px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 13.5px;
-    }
-
-    th {
-      background: #f3f4f6;
-      padding: 12px 14px;
-      font-weight: 700;
-      color: var(--text-main);
-      border-bottom: 2px solid var(--border);
-      white-space: nowrap;
-    }
-
-    td {
-      padding: 13px 14px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    tr:hover td {
-      background-color: #fafaf9;
-    }
-
-    .badge-core { background: #fee2e2; color: #991b1b; padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; }
-    .badge-buffer { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; }
-    .badge-vibe { background: #dbeafe; color: #1e40af; padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; }
-
-    /* Screen UI Guide */
-    .ui-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 16px;
-    }
-
-    @media (max-width: 768px) {
-      .ui-split { grid-template-columns: 1fr; }
-    }
-
-    .ui-box-must {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 12px;
-      padding: 18px;
-    }
-
-    .ui-box-must h4 {
-      color: #166534;
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .ui-box-skip {
-      background: var(--danger-light);
-      border: 1px solid #fecaca;
-      border-radius: 12px;
-      padding: 18px;
-    }
-
-    .ui-box-skip h4 {
-      color: var(--danger);
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .ui-list {
-      list-style: none;
-      font-size: 13.5px;
-    }
-
-    .ui-list li {
-      margin-bottom: 8px;
-      padding-left: 20px;
-      position: relative;
-      line-height: 1.5;
-    }
-
-    .ui-box-must .ui-list li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      color: #16a34a;
-      font-weight: bold;
-    }
-
-    .ui-box-skip .ui-list li::before {
-      content: "✖";
-      position: absolute;
-      left: 0;
-      color: var(--danger);
-      font-weight: bold;
-    }
-
-    /* Prompt Box with One-Click Copy */
-    .prompt-card {
-      background: #1e293b;
-      color: #f8fafc;
+    /* Quick Launch Bar */
+    .launch-bar {
+      background: white;
+      border: 2px solid var(--primary);
       border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 18px;
-      position: relative;
-    }
-
-    .prompt-header {
+      padding: 16px 20px;
+      margin-bottom: 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #334155;
+      flex-wrap: wrap;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(45, 90, 67, 0.08);
     }
 
-    .prompt-title {
-      font-size: 15px;
+    .launch-info h3 {
+      font-size: 15.5px;
+      color: var(--primary-dark);
       font-weight: 700;
-      color: #38bdf8;
+      margin-bottom: 2px;
+    }
+
+    .launch-info p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .launch-btn {
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .launch-btn:hover { background: var(--primary-dark); }
+
+    /* Environment Warning Boxes */
+    .env-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 680px) {
+      .env-grid { grid-template-columns: 1fr; }
+    }
+
+    .env-box {
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .env-box-warning {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+
+    .env-box-info {
+      background: var(--blue-bg);
+      border: 1px solid var(--blue-border);
+      color: #1e40af;
+    }
+
+    /* Guide Card Styling (Tab 1) */
+    .guide-section-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin: 28px 0 14px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-light);
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+
+    .guide-card {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .guide-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .guide-badge {
+      background: var(--primary);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .guide-card-title {
+      font-size: 16.5px;
+      font-weight: 750;
+      color: var(--text-main);
+    }
+
+    .guide-card-desc {
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .guide-card-desc strong {
+      color: #0f172a;
+    }
+
+    .guide-img-box {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1.5px solid #cbd5e1;
+      background: #0f172a;
+      text-align: center;
+      margin-bottom: 12px;
+      cursor: zoom-in;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .guide-img-box:hover {
+      border-color: var(--primary);
+      box-shadow: 0 6px 20px rgba(45, 90, 67, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .guide-img-box img {
+      width: 100%;
+      max-height: 560px;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+
+    .guide-img-box:hover img {
+      transform: scale(1.015);
+    }
+
+    /* 플로팅 확대 안내 뱃지 */
+    .guide-img-box::after {
+      content: '🔍 클릭하여 원본 크게 보기';
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #f8fafc;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.25);
+      pointer-events: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .guide-img-box:hover::after {
+      background: var(--primary);
+      color: white;
+      border-color: rgba(255,255,255,0.4);
+      box-shadow: 0 4px 14px rgba(45, 90, 67, 0.4);
+    }
+
+    /* ========================================== */
+    /* Lightbox Modal Styles                      */
+    /* ========================================== */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      user-select: none;
+      animation: modalFadeIn 0.2s ease-out;
+      box-sizing: border-box;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .lightbox-header {
+      width: 100%;
+      max-width: 98vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      padding: 10px 18px;
+      background: rgba(30, 41, 59, 0.85);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      margin-bottom: 8px;
+      box-sizing: border-box;
+      gap: 12px;
+    }
+
+    .lightbox-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .lightbox-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .lightbox-btn {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+      padding: 7px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 700;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+    }
+
+    .lightbox-btn:hover {
+      background: rgba(255,255,255,0.28);
+    }
+
+    .lightbox-btn-close {
+      background: #dc2626;
+      border-color: #ef4444;
+    }
+
+    .lightbox-btn-close:hover {
+      background: #b91c1c;
+    }
+
+    .lightbox-body {
+      flex: 1;
+      width: 100%;
+      max-width: 98vw;
+      height: calc(100vh - 135px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .lightbox-img-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      overflow: auto;
+      box-sizing: border-box;
+    }
+
+    /* 기본 맞춤 상태: 화면 전체 98vw 안에 100% 온전히 수용 (양 사이드 잘림 절대 방지) */
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      cursor: zoom-in;
+      display: block;
+      margin: auto; /* flexbox 내 음수 오버플로우 잘림 방지 */
+      transition: width 0.2s ease;
+    }
+
+    /* 1.5배 확대 상태: 가로폭 160%로 확대하여 마우스 스크롤로 구석구석 탐색 */
+    .lightbox-img.zoomed {
+      max-width: none !important;
+      max-height: none !important;
+      width: 160% !important;
+      height: auto !important;
+      cursor: zoom-out;
+      margin: auto;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+    }
+
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15, 23, 42, 0.75);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.25);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all 0.2s;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .lightbox-nav-btn:hover {
+      background: var(--primary);
+      border-color: transparent;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .lightbox-nav-prev { left: 16px; }
+    .lightbox-nav-next { right: 16px; }
+
+    .lightbox-footer {
+      width: 100%;
+      max-width: 98vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #94a3b8;
+      font-size: 13px;
+      padding: 6px 14px;
+      box-sizing: border-box;
+    }
+
+    .lightbox-counter {
+      background: rgba(255,255,255,0.1);
+      padding: 4px 12px;
+      border-radius: 12px;
+      color: #f1f5f9;
+      font-weight: 700;
+    }
+
+    .guide-tip {
+      background: #f8fafc;
+      border-left: 4px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      color: #7c2d12;
+      line-height: 1.5;
+    }
+
+    /* Step Card Styling (Tab 2) */
+    .step-section {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .step-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-tag {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .tag-must { background: #fee2e2; color: #991b1b; }
+    .tag-goal { background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; }
+    .tag-vibe { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .tag-mission { background: #dcfce7; color: #166534; }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 750;
+      color: var(--text-main);
+    }
+
+    .step-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.55;
+    }
+
+    /* Prompt Box with One-Click Copy */
+    .prompt-box {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 16px 18px;
+      position: relative;
+    }
+
+    .prompt-content {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      word-break: break-all;
+      color: #e2e8f0;
+      margin-bottom: 14px;
     }
 
     .copy-btn {
       background: #0ea5e9;
       color: white;
       border: none;
-      padding: 6px 14px;
+      padding: 9px 16px;
       border-radius: 6px;
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 13.5px;
+      font-weight: 700;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
+      width: 100%;
+      justify-content: center;
       transition: background 0.2s;
     }
 
     .copy-btn:hover { background: #0284c7; }
     .copy-btn.copied { background: #10b981; }
 
-    .prompt-body {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 13px;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      word-break: break-all;
-      color: #e2e8f0;
-    }
-
-    /* Checkpoint */
-    .checkpoint-box {
+    /* Check Point Box */
+    .checkpoint {
       background: #f0fdf4;
-      border-left: 4px solid #16a34a;
-      padding: 12px 16px;
-      border-radius: 6px;
-      margin-top: 10px;
-      margin-bottom: 18px;
-      font-size: 13.5px;
-      color: #166534;
-    }
-
-    /* Screenshot Placeholder */
-    .screenshot-placeholder {
-      border: 2px dashed #94a3b8;
-      border-radius: 12px;
-      background: #f8fafc;
-      padding: 22px 18px;
-      text-align: center;
-      margin: 16px 0 22px 0;
-      transition: all 0.2s ease;
-    }
-
-    .screenshot-placeholder:hover {
-      border-color: var(--primary);
-      background: #f1f5f9;
-    }
-
-    .placeholder-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #e2e8f0;
-      color: #475569;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 6px;
-    }
-
-    .placeholder-title {
-      font-size: 14.5px;
-      font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 4px;
-    }
-
-    .placeholder-desc {
-      font-size: 12.5px;
-      color: #64748b;
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-
-    .placeholder-guide {
-      display: inline-block;
-      background: #1e293b;
-      color: #38bdf8;
-      font-family: ui-monospace, monospace;
-      font-size: 11.5px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      text-align: left;
-    }
-
-    /* Script Blocks */
-    .script-block {
-      background: #fafaf9;
-      border-left: 4px solid #3b82f6;
+      border: 1px dashed #86efac;
       border-radius: 8px;
-      padding: 18px 20px;
-      margin-bottom: 18px;
-    }
-
-    .script-header {
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: #166534;
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
-      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    /* Step 4 Option Grid */
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .option-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .option-card strong {
+      display: block;
       color: #1e40af;
-      font-size: 14px;
+      margin-bottom: 4px;
+      font-size: 13.5px;
     }
 
-    .script-action {
-      background: #e0e7ff;
-      color: #3730a3;
-      padding: 2px 8px;
-      border-radius: 4px;
+    .option-code {
+      background: #1e293b;
+      color: #f1f5f9;
+      padding: 6px 10px;
+      border-radius: 6px;
+      display: block;
+      margin-top: 6px;
+      font-family: monospace;
       font-size: 12px;
-      font-weight: 700;
+      cursor: pointer;
     }
 
-    .script-body {
-      font-size: 13.5px;
-      color: #334155;
-      line-height: 1.7;
+    /* Independence Card */
+    .independence-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
     }
 
-    .script-body strong {
+    .independence-card h3 {
+      font-size: 16px;
+      font-weight: 750;
       color: #0f172a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* Callout & Tips */
-    .callout {
-      background: var(--accent-light);
-      border-left: 4px solid var(--accent);
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin-top: 14px;
-      font-size: 13.5px;
-      color: #9a3412;
-      line-height: 1.6;
+    .formula-box {
+      background: #1e293b;
+      color: #f8fafc;
+      border-radius: 10px;
+      padding: 16px;
+      font-family: monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-top: 10px;
     }
 
-    .callout strong {
-      color: #7c2d12;
+    /* Emergency FAQ */
+    .faq-section {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
     }
 
-    .tip-box {
-      background: var(--blue-bg);
-      border-left: 4px solid #3b82f6;
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin-top: 14px;
-      font-size: 13.5px;
-      color: #1e3a8a;
-      line-height: 1.6;
+    .faq-section h3 {
+      font-size: 16px;
+      font-weight: 750;
+      margin-bottom: 14px;
+      color: var(--text-main);
     }
 
-    /* Share Warning */
-    .share-alert {
-      background: #fef2f2;
-      border: 2px solid #ef4444;
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-top: 14px;
-      margin-bottom: 16px;
-      color: #991b1b;
+    .faq-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f5f9;
       font-size: 13.5px;
       line-height: 1.6;
     }
 
-    .share-alert strong {
-      color: #7f1d1d;
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      color: #4b5563;
     }
 
     /* Toast Notification */
@@ -536,7 +742,7 @@
       color: white;
       padding: 12px 24px;
       border-radius: 10px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
       box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
       transform: translateY(100px);
@@ -549,6 +755,13 @@
       transform: translateY(0);
       opacity: 1;
     }
+
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
   </style>
 </head>
 <body>
@@ -557,258 +770,246 @@
 
   <!-- Header -->
   <header>
-    <div class="header-badge">사랑의교회 여직장인 순장반 AI 워크숍 (강사용 통합 지도안)</div>
-    <h1>사랑의교회 여직장인 순장반:<br>Google AI Studio 바이브 코딩 (150분 완성 강의안)</h1>
-    <p>설치 없이 브라우저로 끝내는 스마트 케어노트 제작 및 일터 자립 가이드</p>
+    <div class="header-badge">사랑의교회 여직장인 순장반 맞춤형 가이드</div>
+    <h1>내 손으로 만드는 우리 순 전용 웹앱</h1>
+    <p>화면 설명 사진을 눈으로 먼저 익히고, 실습 탭에서 나만의 웹앱을 완성해 보세요!</p>
   </header>
 
-  <!-- Meta Card -->
-  <div class="meta-card">
-    <div class="meta-item">
-      <span class="meta-label">강의 일시</span>
-      <span class="meta-value"><span class="fill-box">[ 2026년 O월 O일 (요일) 00:00 ~ 00:00 ]</span></span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">강의 장소</span>
-      <span class="meta-value"><span class="fill-box">[ 사랑의교회 비전센터 / 드림센터 ]</span></span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">강사명</span>
-      <span class="meta-value"><span class="fill-box">[ 강사 이름 입력 ]</span></span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">문의 & 도우미</span>
-      <span class="meta-value"><strong>AI 미션그룹</strong></span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">수강생 실습 페이지 링크</span>
-      <span class="meta-value"><span class="fill-box">[ student.html 링크 / bit.ly/우리순AI실습 ]</span></span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">핵심 도구 / 모델</span>
-      <span class="meta-value">Google AI Studio / Gemini 3.8 Flash</span>
-    </div>
-  </div>
-
-  <!-- Sticky Navigation Bar -->
-  <nav class="toc-bar">
-    <a href="#section-goals" class="toc-link">1. 목표 & 개요</a>
-    <a href="#section-prerequisites" class="toc-link">2. 사전 준비 & OS</a>
-    <a href="#section-timetable" class="toc-link">3. 150분 타임테이블</a>
-    <a href="#section-ui-guide" class="toc-link">4. 화면 설명(Must vs Skip)</a>
-    <a href="#section-prompts" class="toc-link">5. 실습 프롬프트 (Step 1~4)</a>
-    <a href="#section-share" class="toc-link">6. 스마트폰 링크 공유 (Share)</a>
-    <a href="#section-independence" class="toc-link">7. 자립 공식 & 단어 치환</a>
-    <a href="#section-tips" class="toc-link">8. 대기시간 & 트러블슈팅</a>
-    <a href="#section-scripts" class="toc-link">9. 강의 대본 (Full Script)</a>
+  <!-- Main Tab Navigation -->
+  <nav class="main-tabs">
+    <button class="tab-btn active" id="btn-guide" onclick="switchTab('guide')">
+      🖥️ 1. AI Studio 화면 설명 가이드
+    </button>
+    <button class="tab-btn" id="btn-practice" onclick="switchTab('practice')">
+      🚀 2. 실습 & 프롬프트 (메인 실습)
+    </button>
   </nav>
 
-  <!-- 1. 목표 & 개요 -->
-  <section id="section-goals">
-    <h2>🎯 1. 강의 개요 및 학습 목표</h2>
-    <p>평일 직장 업무와 주말 소그룹(순) 사역을 감당하느라 늘 에너지가 부족한 여직장인 순장들을 위해, 복잡한 개발 도구 설치 없이 브라우저 대화창만으로 실제 작동하는 웹앱을 만들어내는 <strong>바이브 코딩(Vibe Coding)</strong> 실습형 워크숍입니다.</p>
+  <!-- ========================================== -->
+  <!-- [탭 1] 🖥️ AI Studio 화면 설명 가이드       -->
+  <!-- ========================================== -->
+  <main id="tab-guide" class="tab-content active">
 
-    <div class="grid-3">
-      <div class="goal-card">
-        <h4>1. 사역 시간의 극적 단축 (시간 청지기)</h4>
-        <p>수작업 출석부와 흩어진 카톡 기도제목을 단 1초 만에 취합·공유하는 맞춤형 웹앱을 완성합니다.</p>
-      </div>
-      <div class="goal-card">
-        <h4>2. 설치 0초 바이브 코딩 체득</h4>
-        <p>터미널이나 에디터 없이, 브라우저 대화창에 우리말로 지시하고 실시간 Preview로 확인하는 최신 AI 개발 경험을 얻습니다.</p>
-      </div>
-      <div class="goal-card">
-        <h4>3. 일터 실무 생산성 확장</h4>
-        <p>순모임 도구를 단어 몇 개만 바꿔 '팀 주간 업무 To-Do 취합 대시보드'로 즉시 변형하여 내일 회사에서 바로 써먹습니다.</p>
-      </div>
+    <div style="background: white; border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;">
+      <h3 style="font-size: 16px; color: var(--primary-dark); margin-bottom: 6px;">💡 실습 전 꼭 확인하세요!</h3>
+      <p style="font-size: 13.5px; color: #475569; line-height: 1.6;">
+        Google AI Studio 화면을 처음 열면 복잡해 보이지만, 실제 사용하는 곳은 딱 정해져 있습니다.<br>
+        아래 <strong>노란색 화살표</strong>를 따라 화면의 위치와 설정을 눈으로 먼저 확인해 두시면 실습이 10배 쉬워집니다!
+      </p>
     </div>
-  </section>
 
-  <!-- 2. 사전 준비 & 계정 -->
-  <section id="section-prerequisites">
-    <h2>📋 2. 사전 준비, OS 호환성 & 보안 수칙</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
-      <div>
-        <h4 style="font-size: 15px; margin-bottom: 8px;">수강생 준비물 & OS 주의사항</h4>
-        <ul style="font-size: 13.5px; padding-left: 20px; line-height: 1.8;">
-          <li><strong>개인 노트북 & 충전기</strong> (Windows / Mac 무관)</li>
-          <li><strong>마우스 지참 필수 권장</strong> (우측 스마트폰 화면 조작용)</li>
-          <li><strong>Google Chrome 브라우저 필수</strong> (Mac 사용자도 Safari 대신 반드시 Chrome 사용)</li>
-          <li><strong>개인 구글(Gmail) 계정 필수</strong> (회사 구글 Workspace 계정은 관리자 보안 차단 빈번)</li>
-        </ul>
+    <!-- 파트 1: 시작하기 & 새 앱 만들기 -->
+    <h3 class="guide-section-title">📍 Part 1. 시작하기 & 새 앱 만들기</h3>
+
+    <!-- 1. 초기화면 -->
+    <div class="guide-card">
+      <div class="guide-card-header">
+        <span class="guide-badge">화면 01</span>
+        <div class="guide-card-title">AI Studio 접속 첫 화면 (Playground)</div>
       </div>
-      <div>
-        <h4 style="font-size: 15px; margin-bottom: 8px;">강사용 체크리스트</h4>
-        <ul style="font-size: 13.5px; padding-left: 20px; line-height: 1.8;">
-          <li>교육장 Wi-Fi 접속 안정성 & 강사 핫스팟 비상망 대기</li>
-          <li>비상용 구글 계정 2~3개 준비 (로그인 막힌 수강생 대여용)</li>
-          <li>강사 빔 화면 <strong>배율 100~110% 유지</strong> (창 가려짐 방지)</li>
-          <li>본 안내 웹페이지 링크를 단축 URL로 칠판에 적어두기</li>
-          <li>강사용 Step 3 완성 프로젝트 Share 링크 사전 준비</li>
-        </ul>
+      <div class="guide-card-desc">
+        AI Studio에 처음 접속하면 중앙에 복잡한 개발자용 화면(Playground)이 보입니다. 당황하지 마세요!<br>
+        우리는 화면 중앙을 보지 않고, <strong>좌측 메뉴의 [BUILD] 영역</strong>으로 시선을 이동합니다.
+      </div>
+      <div class="guide-img-box">
+        <img src="화면설명/1.초기화면.png" alt="1. 초기화면">
+      </div>
+      <div class="guide-tip">
+        ✔ 중앙의 API Key 연결이나 복잡한 설정은 전문 프로그래머 영역이므로 누르실 필요가 없습니다.
       </div>
     </div>
 
-    <div class="tip-box">
-      <strong>💡 회사 계정 로그인 충돌 해결법 (현장 필수 안내):</strong><br>
-      직장인 수강생의 노트북 크롬에 회사 구글 계정이 로그인되어 있어 AI Studio 접속이 차단(403 Error)되는 경우, 즉시 <strong>Ctrl + Shift + N (Mac: Cmd + Shift + N)</strong>을 눌러 <strong>새 시크릿 창</strong>을 띄운 뒤 개인 Gmail로 로그인하도록 지도하세요.
-    </div>
-
-    <div class="callout">
-      <strong>🚨 필수 개인정보 보호 수칙 (강사 오프닝 엄격 공지):</strong><br>
-      Google AI Studio 무료 티어 약관상, 실제 순원의 실명, 연락처, 내밀한 가정사나 질병 기도제목은 절대 입력하지 마시고, <strong>반드시 가상의 이름(은지, 수진 등)과 가상 기도제목</strong>으로 실습합니다.
-    </div>
-  </section>
-
-  <!-- 3. 타임테이블 -->
-  <section id="section-timetable">
-    <h2>⏱️ 3. 150분 확정 타임테이블</h2>
-    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">
-      ★ <strong>Step 1~3(카톡 문구 복사)까지만 성공하면 오늘 100점 공식 수료</strong>입니다. Step 4는 내 말로 직접 고쳐보는 바이브 코딩 실전이며, 스마트폰 링크 공유(Share)는 선택 실습으로 진행합니다.
-    </p>
-
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>파트</th>
-            <th>시간</th>
-            <th>코너명</th>
-            <th>핵심 내용 및 강사 행동</th>
-            <th>구분</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td rowspan="2"><strong>1부<br>영감 & 인터페이스<br>(25분)</strong></td>
-            <td>00~10분 (10m)</td>
-            <td><strong>완성작 2종 라이브 시연</strong></td>
-            <td>강사가 미리 만든 '케어노트' & '업무취합기' 3분 시연 (동기부여 극대화)</td>
-            <td><span class="badge-core">시연</span></td>
-          </tr>
-          <tr>
-            <td>10~25분 (15m)</td>
-            <td><strong>화면 투어 & 직관 2원칙</strong></td>
-            <td>Build Mode 필수 3대 영역 소개 (Preview, Prompt, Share) & 건너뛸 영역 차단</td>
-            <td>설명</td>
-          </tr>
-          <tr style="background: #fafaf9;">
-            <td><strong>점검 (10분)</strong></td>
-            <td>25~35분 (10m)</td>
-            <td><strong>로그인 & 가상데이터 안내</strong></td>
-            <td>개인 Gmail 로그인 확인 (시크릿 창 대기), 좌우 분할 세팅, 가상 데이터 공지</td>
-            <td>환경</td>
-          </tr>
-          <tr>
-            <td rowspan="3"><strong>2부<br>메인 실습<br>(55분)</strong></td>
-            <td>35~53분 (18m)</td>
-            <td><strong>[Step 1] 기본 뼈대 앱 빌드</strong></td>
-            <td>모바일 웹앱 생성 ➜ 우측 Preview에서 '은지, 수진' 가상 순원 확인 및 버튼 조작</td>
-            <td><span class="badge-core">필수 1</span></td>
-          </tr>
-          <tr>
-            <td>53~69분 (16m)</td>
-            <td><strong>[Step 2] 브라우저 저장 연동</strong></td>
-            <td>로컬 저장소 연동 ➜ F5(Mac: Cmd+R) 눌러도 데이터 살아있음 확인 (심방 시나리오)</td>
-            <td><span class="badge-core">필수 2</span></td>
-          </tr>
-          <tr>
-            <td>69~90분 (21m)</td>
-            <td><strong>[Step 3] 카톡 문구 생성/복사</strong></td>
-            <td><strong>[★ 공식 수료선]</strong> 카톡 문구 상자 상시 노출 + 자동 복사 ➜ 나와의 채팅방 전송</td>
-            <td><span class="badge-core">수료선</span></td>
-          </tr>
-          <tr>
-            <td rowspan="2"><strong>3부<br>바이브코딩 & 버퍼<br>(25분)</strong></td>
-            <td>90~100분 (10m)</td>
-            <td><strong>[Step 4] 진짜 바이브 코딩 실전</strong></td>
-            <td>내 말로 원하는 기능 1개 직접 지시 (출석 색상 변경 / 인원 카운트 / 감성 테마)</td>
-            <td><span class="badge-vibe">바이브코딩</span></td>
-          </tr>
-          <tr>
-            <td>100~115분 (15m)</td>
-            <td><strong>★ 구조적 버퍼 (1:1 복구)</strong></td>
-            <td>뒤처진 수강생 프롬프트 복구, 질문 해결, 최종 미완성자에게 완성 링크 배포</td>
-            <td><span class="badge-buffer">안전망</span></td>
-          </tr>
-          <tr>
-            <td rowspan="2"><strong>4부<br>소장 & 확장<br>(25분)</strong></td>
-            <td>115~125분 (10m)</td>
-            <td><strong>스마트폰에서 열기 (Share)</strong></td>
-            <td><strong>[주의]</strong> Restricted ➔ Public 변경 필수 안내 후 스마트폰 홈 화면 추가</td>
-            <td>소장</td>
-          </tr>
-          <tr>
-            <td>125~140분 (15m)</td>
-            <td><strong>직장 실무 확장 & 단어 치환</strong></td>
-            <td>+ New app 누르고 '순원' ➔ '팀원', '기도제목' ➔ 'To-Do' 단어 3개 바꿔 새 앱 빌드</td>
-            <td>자립</td>
-          </tr>
-          <tr style="background: #fafaf9;">
-            <td><strong>마무리 (10분)</strong></td>
-            <td>140~150분 (10m)</td>
-            <td><strong>대표 나눔 & 축복 마무리</strong></td>
-            <td>대표 2~3명 화면 공유 + 전체 폰 화면 확인, 3문장 공식 선물 & 영혼 사랑 축복</td>
-            <td>나눔</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- 4. 화면 설명 가이드 -->
-  <section id="section-ui-guide">
-    <h2>🖥️ 4. Google AI Studio 화면 설명 가이드 (Must vs Skip)</h2>
-    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
-      비개발자에게 많은 것을 설명하면 공포를 느낍니다. <strong>건너뛸 곳을 과감히 숨겨주는 것</strong>이 강사의 핵심 역량입니다.
-    </p>
-
-    <!-- [스크린샷 1 자리] -->
-    <div class="screenshot-placeholder">
-      <div class="placeholder-tag">📷 스크린샷 첨부 위치 #1</div>
-      <div class="placeholder-title">Google AI Studio Build Mode 전체 화면 (Must & Skip 하이라이트)</div>
-      <div class="placeholder-desc">좌측 프롬프트 입력창, 중앙/우측 Preview 화면, 우측 상단 Share 버튼에 초록 박스를 치고, Playground/Code 탭에는 붉은 X 표시를 한 캡처 이미지를 여기에 배치하세요.</div>
-      <div class="placeholder-guide">
-        &lt;!-- &lt;img src="images/01_aistudio_ui_guide.png" alt="AI Studio UI Guide" style="max-width:100%; border-radius:8px;"&gt; --&gt;
+    <!-- 2. 앱 개발화면 -->
+    <div class="guide-card">
+      <div class="guide-card-header">
+        <span class="guide-badge">화면 02</span>
+        <div class="guide-card-title">새 앱 시작하기 (+ New app)</div>
+      </div>
+      <div class="guide-card-desc">
+        좌측 메뉴에서 <strong>`+ New app`</strong>(노란색 화살표)을 누르면 깨끗한 새 작업실이 열립니다.<br>
+        화면 중앙의 <em>"Describe an app and let Gemini do the rest"</em> 입력창에 우리가 준비한 프롬프트를 넣으면 앱이 빌드됩니다.
+      </div>
+      <div class="guide-img-box">
+        <img src="화면설명/2.앱 개발화면.png" alt="2. 앱 개발화면">
+      </div>
+      <div class="guide-tip">
+        ✔ 실습 탭의 [Step 1 프롬프트]를 복사해서 이곳에 붙여넣고 엔터를 치면 나만의 첫 앱이 탄생합니다.
       </div>
     </div>
 
-    <div class="ui-split">
-      <div class="ui-box-must">
-        <h4>⭕ 실습 중 꼭 볼 3가지 (Must)</h4>
-        <ul class="ui-list">
-          <li><strong>우측 실시간 화면 (Preview):</strong> 내가 만든 앱이 실제로 구동되는 스마트폰 화면. 마우스로 버튼 누르고 직접 테스트.</li>
-          <li><strong>좌측 하단 입력창 (Prompt Bar):</strong> "살을 붙이고 수정 지시를 내리는 창구". 우리말로 지시 입력.</li>
-          <li><strong>우측 상단 [Share] 버튼:</strong> 다 만든 후 내 스마트폰으로 앱 링크를 보낼 때 누르는 관문.</li>
-          <li><em>(참고) 좌측 메뉴 <code>+ New app</code>은 4부 자립 실습 때 딱 한 번만 누릅니다.</em></li>
-        </ul>
-      </div>
+    <!-- 파트 2: 내 앱 보관함 & 갤러리 둘러보기 -->
+    <h3 class="guide-section-title">📍 Part 2. 내 앱 보관함 & 갤러리 둘러보기</h3>
 
-      <div class="ui-box-skip">
-        <h4>❌ 건너뛸 영역 3가지 (Skip)</h4>
-        <ul class="ui-list">
-          <li><strong>Preview 상단의 <code>&lt;&gt;</code> (Code 보기 탭):</strong> 누르면 복잡한 개발 코드가 쏟아집니다. 누르지 마세요.</li>
-          <li><strong>좌측 메뉴의 <code>Playground</code> & <code>Dashboard</code>:</strong> API Key 및 결제 관련 개발자 영역. 쳐다보지 마세요.</li>
-          <li><strong>좌측 채팅에 뜨는 파일 이름들 (<code>app/src/...</code>):</strong> AI가 혼자 일했다는 영수증일 뿐이니 무시.</li>
-        </ul>
+    <!-- 3. 내 앱리스트 -->
+    <div class="guide-card">
+      <div class="guide-card-header">
+        <span class="guide-badge">화면 03</span>
+        <div class="guide-card-title">내가 만든 앱 보관함 (My apps)</div>
+      </div>
+      <div class="guide-card-desc">
+        좌측 메뉴의 <strong>`My apps`</strong>를 누르면, 지금까지 내가 만들었던 모든 웹앱들이 목록으로 저장되어 있습니다.<br>
+        언제든지 클릭해서 이전에 만들던 앱을 다시 열고, 수정하거나 계속 사용할 수 있습니다.
+      </div>
+      <div class="guide-img-box">
+        <img src="화면설명/3.내 앱리스트-1.png" alt="3. 내 앱리스트 1">
+      </div>
+      <div class="guide-img-box">
+        <img src="화면설명/3.내 앱리스트-2.png" alt="3. 내 앱리스트 2">
+      </div>
+      <div class="guide-tip">
+        ✔ 오늘 실습이 끝난 뒤에도 언제든 `My apps`에 들어오시면 내가 만든 순모임 케어노트가 그대로 보관되어 있습니다.
       </div>
     </div>
-  </section>
 
-  <!-- 5. 실습 프롬프트 템플릿 -->
-  <section id="section-prompts">
-    <h2>💻 5. 실습용 프롬프트 템플릿 (Step 1 ~ Step 4)</h2>
-    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
-      수강생 교안(`student.html`)과 100% 동일한 순서로 구성되어 있습니다.
-    </p>
+    <!-- 4. 갤러리 -->
+    <div class="guide-card">
+      <div class="guide-card-header">
+        <span class="guide-badge">화면 04</span>
+        <div class="guide-card-title">전 세계 사용자들의 작품 둘러보기 (Gallery)</div>
+      </div>
+      <div class="guide-card-desc">
+        좌측 메뉴의 <strong>`Gallery`</strong>를 누르면 다른 사람들이 Gemini로 만든 인터랙티브 앱들을 구경할 수 있습니다.<br>
+        "이런 도구도 자연어로 만들 수 있구나!" 영감을 얻으실 수 있는 좋은 공간입니다.
+      </div>
+      <div class="guide-img-box">
+        <img src="화면설명/4.겔러리-남들이 한것들.png" alt="4. 갤러리 남들이 한것들">
+      </div>
+    </div>
+
+    <!-- 파트 3: 셋팅 버튼 & AI 모델 확인 -->
+    <h3 class="guide-section-title">📍 Part 3. 셋팅 버튼 & AI 모델 확인</h3>
+
+    <!-- 5 & 6. 셋팅 & AI 모델 -->
+    <div class="guide-card">
+      <div class="guide-card-header">
+        <span class="guide-badge">화면 05 & 06</span>
+        <div class="guide-card-title">우측 상단 셋팅(톱니바퀴) & Gemini 3.8 Flash 확인</div>
+      </div>
+      <div class="guide-card-desc">
+        앱 빌드 화면 우측 상단 끝의 <strong>톱니바퀴(Settings)</strong> 버튼(화면 5)을 누르면 오른쪽 사이드 패널이 열립니다.<br>
+        `Chat settings`의 모델 선택창에 최신 안정 모델인 <strong>`Default (Gemini 3.8 Flash)`</strong>(화면 6)가 지정되어 있는지 확인할 수 있습니다.
+      </div>
+      <div class="guide-img-box">
+        <img src="화면설명/5.셋팅버튼.png" alt="5. 셋팅버튼">
+      </div>
+      <div class="guide-img-box">
+        <img src="화면설명/6.ai모델셋팅.png" alt="6. AI 모델셋팅">
+      </div>
+      <div class="guide-tip">
+        ✔ 기본값으로 Gemini 3.8 Flash가 잡혀 있으므로, 별도로 옵션을 변경하지 않으셔도 안전하게 동작합니다.
+      </div>
+    </div>
+
+    <!-- 파트 4: [가장 중요] 스마트폰 전송 시 필수 설정 3단계 -->
+    <h3 class="guide-section-title" style="color: #b91c1c; border-color: #fecaca;">🚨 Part 4. [가장 중요] 내 폰으로 보낼 때 필수 설정 3단계</h3>
+
+    <div style="background: #fef2f2; border: 2px solid #ef4444; border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; font-size: 13.5px; line-height: 1.6; color: #991b1b;">
+      <strong>⚠️ 스마트폰에서 "권한 없음(Restricted)" 에러가 뜨지 않게 하는 법:</strong><br>
+      우측 상단의 <code>[Share]</code>를 눌렀을 때, 아래 3장의 사진에 나온 순서대로 <strong>반드시 설정을 변경</strong>해야 내 스마트폰에서 로그인 없이 1초 만에 앱이 열립니다!
+    </div>
+
+    <!-- 7. 공유시 공개설정 -->
+    <div class="guide-card" style="border-left: 4px solid #ef4444;">
+      <div class="guide-card-header">
+        <span class="guide-badge" style="background: #dc2626;">필수 1단계</span>
+        <div class="guide-card-title">General access ➔ 반드시 'Public'으로 변경!</div>
+      </div>
+      <div class="guide-card-desc">
+        기본값이 <code>🔒 Restricted</code>(제한됨)으로 되어 있으면 내 폰에서 열리지 않습니다!<br>
+        반드시 클릭하여 노란색 화살표가 가리키는 <strong>`🌐 Public: Anyone with the link can view`</strong>를 선택하세요.
+      </div>
+      <div class="guide-img-box">
+        <img src="화면설명/7.공유시 공개설정.png" alt="7. 공유시 공개설정">
+      </div>
+    </div>
+
+    <!-- 8. 채팅 기록끄기 -->
+    <div class="guide-card" style="border-left: 4px solid #3b82f6;">
+      <div class="guide-card-header">
+        <span class="guide-badge" style="background: #2563eb;">필수 2단계</span>
+        <div class="guide-card-title">Include your Gemini chat history ➔ 꺼짐(OFF) 확인</div>
+      </div>
+      <div class="guide-card-desc">
+        내가 AI와 나눈 프롬프트 대화 기록이 다른 사람에게 공개되지 않도록 보호하는 보안 설정입니다.<br>
+        노란색 화살표의 스위치가 <strong>회색(꺼짐/OFF) 상태</strong>인지 확인하세요. (기본값이 꺼짐입니다)
+      </div>
+      <div class="guide-img-box">
+        <img src="화면설명/8.채팅 기록끄기.png" alt="8. 채팅 기록끄기">
+      </div>
+    </div>
+
+    <!-- 9. 공유버튼 -->
+    <div class="guide-card" style="border-left: 4px solid #16a34a;">
+      <div class="guide-card-header">
+        <span class="guide-badge" style="background: #16a34a;">필수 3단계</span>
+        <div class="guide-card-title">하단 [Copy link] 클릭하여 내 카톡으로 전송!</div>
+      </div>
+      <div class="guide-card-desc">
+        설정이 끝났다면 창 맨 아래 노란색 화살표의 <strong>`Copy link`</strong> 버튼을 누릅니다.<br>
+        복사된 링크를 PC 카톡 '나와의 채팅방'에 붙여넣고 스마트폰에서 링크를 터치하면 끝납니다!
+      </div>
+      <div class="guide-img-box">
+        <img src="화면설명/9.공유버튼.png" alt="9. 공유버튼">
+      </div>
+      <div class="guide-tip">
+        ✔ 상단 메뉴의 `Publish`는 누르지 마세요! 클라우드 유료 결제 창이 뜰 수 있습니다. 오직 `Share` 탭만 사용합니다.
+      </div>
+    </div>
+
+    <!-- 실습 탭 바로가기 CTA 버튼 -->
+    <div style="text-align: center; margin: 32px 0;">
+      <button class="copy-btn" style="max-width: 380px; margin: 0 auto; padding: 14px 24px; font-size: 15px;" onclick="switchTab('practice')">
+        🚀 화면을 다 확인하셨다면? [메인 실습하러 가기] ➔
+      </button>
+    </div>
+
+  </main>
+
+
+  <!-- ========================================== -->
+  <!-- [탭 2] 🚀 실습 & 프롬프트 (메인 실습)       -->
+  <!-- ========================================== -->
+  <main id="tab-practice" class="tab-content">
+
+    <!-- Quick Launch Bar -->
+    <div class="launch-bar">
+      <div class="launch-info">
+        <h3>🚀 실습 사이트 바로가기</h3>
+        <p>크롬 브라우저에서 아래 버튼을 눌러 새 탭에 띄워두세요.</p>
+      </div>
+      <a href="https://aistudio.google.com/" target="_blank" class="launch-btn">
+        Google AI Studio 열기 ↗
+      </a>
+    </div>
+
+    <!-- Environment & Account Warnings -->
+    <div class="env-grid">
+      <div class="env-box env-box-warning">
+        <strong>⚠️ 브라우저 및 개인정보 보안:</strong><br>
+        • <strong>Mac 사용자:</strong> Safari 브라우저는 복사 기능이 차단될 수 있으니 <strong>반드시 Chrome 브라우저</strong>를 실행해 주세요.<br>
+        • 실습 시 실제 순원의 이름과 기도제목 대신 <strong>가상의 이름(은지, 수진 등)</strong>을 사용해 주세요.
+      </div>
+      <div class="env-box env-box-info">
+        <strong>💡 회사 계정 로그인 충돌 해결법:</strong><br>
+        회사 구글 계정으로 로그인되어 접속이 차단(403 Error)된다면, 키보드에서 <strong>Ctrl + Shift + N (Mac: Cmd + Shift + N)</strong>을 눌러 <strong>새 시크릿 창</strong>을 띄운 뒤 개인 Gmail로 접속하세요!
+      </div>
+    </div>
 
     <!-- Step 1 -->
-    <div class="prompt-card">
-      <div class="prompt-header">
-        <span class="prompt-title"><span>Step 1 (필수)</span> 기본 뼈대 앱 빌드 (18분)</span>
-        <button class="copy-btn" onclick="copyPrompt('p1', this)">📋 복사하기</button>
+    <div class="step-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-tag tag-must">Step 1 (필수)</span>
+          <span class="step-title">기본 뼈대 앱 만들기</span>
+        </div>
+        <span style="font-size: 13px; color: var(--text-muted);">소요 시간 약 18분</span>
       </div>
-      <div class="prompt-body" id="p1">모바일 브라우저와 PC에서 바로 편리하게 사용할 수 있는 '순모임 스마트 케어노트' 웹앱(Web app)을 만들어줘.
+      <div class="step-desc">
+        순모임 케어노트의 기본 틀(순원 이름 카드, 출석 체크박스, 기도제목 입력창)을 생성합니다.
+      </div>
+
+      <div class="prompt-box">
+        <div class="prompt-content" id="p1">모바일 브라우저와 PC에서 바로 편리하게 사용할 수 있는 '순모임 스마트 케어노트' 웹앱(Web app)을 만들어줘.
 
 [필수 요구사항]
 1. 상단 헤더: 오늘 날짜 표시, '00다락방 0순 케어노트' 제목 (클릭하여 직접 수정 가능)
@@ -823,28 +1024,29 @@
 
 외부 백엔드 서버나 로그인 없이 브라우저에서 바로 동작하는 구조로 만들어줘.
 완성 후 오른쪽 Preview 화면에서 바로 마우스로 버튼을 누르고 테스트할 수 있게 즉시 실행해줘.</div>
-    </div>
-    <div class="checkpoint-box">
-      ✅ <strong>확인 미션:</strong> 우측 스마트폰 화면에 '은지, 수진' 이름과 [새 순원 추가] 버튼이 잘 보이나요?
-    </div>
+        <button class="copy-btn" onclick="copyPrompt('p1', this)">📋 1단계 프롬프트 복사하기</button>
+      </div>
 
-    <!-- [스크린샷 2 자리] -->
-    <div class="screenshot-placeholder">
-      <div class="placeholder-tag">📷 스크린샷 첨부 위치 #2</div>
-      <div class="placeholder-title">Step 1 완성 화면 Preview (기본 뼈대 앱)</div>
-      <div class="placeholder-desc">우측 Preview 화면에 은지와 수진이 이름표 카드, 출석 체크박스, 기도제목 입력창이 생성된 실제 모습을 캡처하여 넣으세요.</div>
-      <div class="placeholder-guide">
-        &lt;!-- &lt;img src="images/02_step1_preview.png" alt="Step 1 Preview" style="max-width:100%; border-radius:8px;"&gt; --&gt;
+      <div class="checkpoint">
+        ✅ <strong>확인 미션:</strong> 우측 스마트폰 화면에 '은지, 수진' 이름과 [새 순원 추가] 버튼이 잘 보이나요?
       </div>
     </div>
 
     <!-- Step 2 -->
-    <div class="prompt-card">
-      <div class="prompt-header">
-        <span class="prompt-title"><span>Step 2 (필수)</span> 새로고침해도 유지되는 브라우저 저장 연동 (16분)</span>
-        <button class="copy-btn" onclick="copyPrompt('p2', this)">📋 복사하기</button>
+    <div class="step-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-tag tag-must">Step 2 (필수)</span>
+          <span class="step-title">새로고침해도 유지되는 브라우저 개인 서랍장 연동</span>
+        </div>
+        <span style="font-size: 13px; color: var(--text-muted);">소요 시간 약 14분</span>
       </div>
-      <div class="prompt-body" id="p2">현재 프로젝트의 기존 순원 목록, 순원 추가/삭제, 출석 체크박스, 기도제목 입력 UI와 기능을 100% 그대로 유지해줘.
+      <div class="step-desc">
+        창을 닫거나 새로고침을 해도 입력한 내용이 내 컴퓨터 브라우저 안에 안전하게 남게 만듭니다. (다른 컴퓨터나 폰으로 자동 연동되지는 않습니다.)
+      </div>
+
+      <div class="prompt-box">
+        <div class="prompt-content" id="p2">현재 프로젝트의 기존 순원 목록, 순원 추가/삭제, 출석 체크박스, 기도제목 입력 UI와 기능을 100% 그대로 유지해줘.
 이번 단계에서는 [데이터 자동 저장 기능]만 정확히 추가해줘.
 
 1. 사용자가 순원을 추가/삭제하거나, 출석 체크박스를 누르거나, 기도제목을 입력할 때마다 별도의 서버 없이 브라우저 자체 로컬 저장소(localStorage)에 모든 데이터가 실시간으로 자동 저장되게 해줘.
@@ -852,34 +1054,29 @@
 3. 기존 레이아웃 스타일과 컴포넌트 구조는 임의로 바꾸지 마.
 
 기존 기능을 손상시키지 말고 오직 브라우저 로컬 저장 연동 로직만 안전하게 적용해줘.</div>
-    </div>
+        <button class="copy-btn" onclick="copyPrompt('p2', this)">📋 2단계 프롬프트 복사하기</button>
+      </div>
 
-    <div class="tip-box">
-      <strong>💡 강사 티칭 팁 (localStorage 올바른 설명):</strong><br>
-      수강생에게 기술 용어를 쓰지 마세요. <em>"스마트폰 메모장에 쓴 글이 남아있는 것처럼, 브라우저 안에 **'내 브라우저 안의 개인 서랍장'**을 하나 달아주는 겁니다. 단, 이 서랍장은 이 컴퓨터 브라우저 안에만 있으므로 다른 컴퓨터나 스마트폰으로 자동으로 따라가지는 않습니다"</em>라고 한계를 명확히 짚어줍니다.
-    </div>
-
-    <div class="checkpoint-box">
-      ✅ <strong>확인 미션:</strong> 기도제목에 글씨를 쓰고 키보드 <strong>F5 (Mac: Cmd + R)</strong>를 눌러도 글자가 그대로 남아있나요?
-    </div>
-
-    <!-- [스크린샷 3 자리] -->
-    <div class="screenshot-placeholder">
-      <div class="placeholder-tag">📷 스크린샷 첨부 위치 #3</div>
-      <div class="placeholder-title">Step 2 저장 기능 확인 (새로고침 후 데이터 유지)</div>
-      <div class="placeholder-desc">새로고침을 한 뒤에도 은지의 기도제목과 출석 체크 상태가 그대로 살아남아 있는 화면을 캡처하여 넣으세요.</div>
-      <div class="placeholder-guide">
-        &lt;!-- &lt;img src="images/03_step2_storage_check.png" alt="Step 2 Storage Check" style="max-width:100%; border-radius:8px;"&gt; --&gt;
+      <div class="checkpoint">
+        ✅ <strong>확인 미션:</strong> 기도제목에 글씨를 써보고, 키보드 <strong>F5 (Mac: Cmd + R)</strong>를 눌러도 글자가 그대로 남아있나요?
       </div>
     </div>
 
-    <!-- Step 3 -->
-    <div class="prompt-card" style="border: 2px solid #f59e0b;">
-      <div class="prompt-header">
-        <span class="prompt-title" style="color: #fbbf24;"><span>Step 3 (★ 공식 수료선)</span> 카톡용 문구 자동 생성 + 복사 (21분)</span>
-        <button class="copy-btn" onclick="copyPrompt('p3', this)">📋 복사하기</button>
+    <!-- Step 3 (Graduation Goal) -->
+    <div class="step-section" style="border: 2px solid #f59e0b;">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-tag tag-goal">★ Step 3 (오늘의 공식 수료 졸업선!)</span>
+          <span class="step-title">카톡용 문구 자동 생성 + 복사</span>
+        </div>
+        <span style="font-size: 13px; color: #b45309; font-weight: 700;">여기까지 성공하면 오늘 100점 졸업!</span>
       </div>
-      <div class="prompt-body" id="p3">현재 프로젝트의 모든 순원 데이터 관리, UI 레이아웃, 브라우저 로컬 자동 저장 로직을 100% 보존해줘.
+      <div class="step-desc">
+        버튼 한 번만 누르면 카카오톡 단체방 공유 양식으로 줄바꿈과 이모지가 예쁘게 클립보드에 복사됩니다.
+      </div>
+
+      <div class="prompt-box">
+        <div class="prompt-content" id="p3">현재 프로젝트의 모든 순원 데이터 관리, UI 레이아웃, 브라우저 로컬 자동 저장 로직을 100% 보존해줘.
 이번 단계에서는 화면 하단에 [카카오톡용 문구 자동 생성 및 복사 기능]만 추가해줘.
 
 1. 화면 하단에 '카카오톡 공유 미리보기' 영역을 만들고, 그 안에 읽기 전용 텍스트 상자(readonly textarea)를 항상 눈에 보이게 배치해줘.
@@ -888,288 +1085,363 @@
    - 버튼을 클릭하면 navigator.clipboard.writeText를 사용하여 카톡 양식 전문이 클립보드에 자동 복사되고 "복사 완료! 카톡에 붙여넣으세요"라는 토스트 알림을 띄워줘.
    - 만약 브라우저 보안 제약이나 모바일 환경으로 인해 자동 복사가 차단되더라도 에러로 멈추지 말고, 하단 텍스트 상자의 내용이 자동으로 전체 선택(select)되도록 처리한 뒤 "PC에서는 Ctrl+C(Mac: Cmd+C), 스마트폰에서는 길게 눌러 복사하세요"라고 안내해줘.
 3. 기존 순원 추가/삭제 및 저장 기능은 절대 건드리지 마.</div>
-    </div>
-    <div class="checkpoint-box" style="background: #fef3c7; border-color: #f59e0b; color: #92400e;">
-      🎓 <strong>공식 수료 기준:</strong> [카톡 문구 복사하기] 누르고, PC 카톡 '나와의 채팅방'에 <strong>Ctrl + V (Mac: Cmd + V)</strong> 했을 때 보고서가 붙여넣어지면 오늘 워크숍 공식 수료입니다!
-    </div>
+        <button class="copy-btn" onclick="copyPrompt('p3', this)">📋 3단계 프롬프트 복사하기</button>
+      </div>
 
-    <!-- [스크린샷 4 자리] -->
-    <div class="screenshot-placeholder">
-      <div class="placeholder-tag">📷 스크린샷 첨부 위치 #4</div>
-      <div class="placeholder-title">Step 3 카톡 복사 결과 (카톡 나와의 채팅방 전송 화면)</div>
-      <div class="placeholder-desc">하단 텍스트 상자에서 복사 버튼을 누른 후, 실제 카카오톡 대화방에 정돈된 이모지와 함께 붙여넣어진 화면을 캡처하여 넣으세요.</div>
-      <div class="placeholder-guide">
-        &lt;!-- &lt;img src="images/04_step3_kakao_result.png" alt="Step 3 Kakao Result" style="max-width:100%; border-radius:8px;"&gt; --&gt;
+      <div class="checkpoint" style="background: #fef3c7; border-color: #f59e0b; color: #92400e;">
+        🎉 <strong>졸업 확인:</strong> [카톡 문구 복사하기] 누르고, PC 카톡 '나와의 채팅방'에 <strong>Ctrl + V (Mac: Cmd + V)</strong> 했을 때 예쁜 보고서가 붙여넣어지면 오늘 공식 수료입니다!
       </div>
     </div>
 
-    <!-- Step 4 -->
-    <div class="prompt-card" style="border: 2px solid #3b82f6;">
-      <div class="prompt-header">
-        <span class="prompt-title" style="color: #60a5fa;"><span>Step 4 (바이브 코딩 실전)</span> 내 말로 원하는 기능 1개 직접 고치기 (10분)</span>
+    <!-- Step 4: 진짜 바이브 코딩 (내 말로 직접 고치기) -->
+    <div class="step-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-tag tag-vibe">Step 4 (바이브 코딩 실전)</span>
+          <span class="step-title">내 말로 원하는 기능 1개 직접 고쳐보기</span>
+        </div>
+        <span style="font-size: 13px; color: #1e40af; font-weight: 700;">진짜 바이브 코딩 체험!</span>
       </div>
-      <div style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">
-        수강생들이 정해진 긴 프롬프트 복붙에서 벗어나, <strong>자신이 원하는 것 딱 하나만 한국어로 직접 입력하게 하는 '진짜 바이브 코딩' 시간</strong>입니다.<br>
-        강사는 아래 3가지 추천 예시 중 하나를 골라 직접 채팅창에 쳐보도록 지도합니다.
+      <div class="step-desc">
+        남이 써준 프롬프트 복사는 이제 끝났습니다! 이번에는 <strong>내가 원하는 것 딱 하나만 AI에게 직접 한국어로 지시</strong>해서 화면을 바꿔보세요.
       </div>
-      <div style="background: #0f172a; padding: 14px; border-radius: 8px; margin-top: 12px; font-size: 13px; line-height: 1.8; color: #93c5fd;">
-        • 추천 1: <em>"출석 체크박스를 누르면 그 순원 카드 배경색이 연한 초록색으로 바뀌게 해줘."</em><br>
-        • 추천 2: <em>"상단 헤더에 오늘 총 출석 인원수가 실시간 계산되어 보이게 해줘."</em><br>
-        • 추천 3: <em>"배경을 따뜻한 크림 베이지로, 버튼을 차분한 세이지 그린으로 바꿔줘."</em>
+
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px; font-size: 13.5px; line-height: 1.6; color: #1e3a8a;">
+        💡 <strong>어떻게 말해야 하나요?</strong> 정답 문장은 없습니다! 친구에게 카톡 하듯이 대화창에 한 줄만 쳐보세요.<br>
+        아래 3가지 추천 미션 중 마음에 드는 것 <strong>하나를 골라 클릭</strong>하시면 복사됩니다.
       </div>
-    </div>
 
-    <!-- [스크린샷 5 자리] -->
-    <div class="screenshot-placeholder">
-      <div class="placeholder-tag">📷 스크린샷 첨부 위치 #5</div>
-      <div class="placeholder-title">Step 4 직접 수정 완성 화면 (바이브 코딩 결과)</div>
-      <div class="placeholder-desc">출석 시 초록색 하이라이트가 켜지거나, 상단 인원 카운트가 추가된 실제 동작 화면을 캡처하여 배치하세요.</div>
-      <div class="placeholder-guide">
-        &lt;!-- &lt;img src="images/05_step4_styled_app.png" alt="Step 4 Styled App" style="max-width:100%; border-radius:8px;"&gt; --&gt;
+      <div class="option-grid">
+        <div class="option-card">
+          <strong>추천 1: 시각적 피드백 주기</strong>
+          출석 체크박스를 누르면 해당 순원 카드에 예쁜 색이 칠해지게 해보세요.
+          <span class="option-code" onclick="copyDirectText('기존 기능 유지하고, 출석 체크박스를 누르면 그 순원 카드의 배경색이 연한 초록색으로 바뀌게 해줘.', this)">
+            "출석 체크하면 그 사람 카드 배경을 연한 초록색으로 바꿔줘." 📋
+          </span>
+        </div>
+        <div class="option-card">
+          <strong>추천 2: 출석 인원 자동 카운트</strong>
+          상단에 오늘 몇 명이 출석했는지 숫자가 실시간으로 뜨게 해보세요.
+          <span class="option-code" onclick="copyDirectText('기존 기능 유지하고, 상단 헤더에 현재 출석 체크된 인원수가 \'오늘 출석: 0명\' 형태로 실시간 자동 계산되어 보이게 해줘.', this)">
+            "상단에 오늘 총 출석 인원수가 실시간 계산되어 보이게 해줘." 📋
+          </span>
+        </div>
+        <div class="option-card">
+          <strong>추천 3: 나만의 감성 컬러 바꾸기</strong>
+          배경과 버튼 색상을 내가 좋아하는 따뜻한 톤으로 옷 입혀보세요.
+          <span class="option-code" onclick="copyDirectText('기존 자바스크립트 동작은 유지하고, 전체 배경을 따뜻한 크림 베이지(#F9F8F6)로, 주요 버튼을 차분한 세이지 그린(#4A6B5D)으로 스타일만 리터치해줘.', this)">
+            "배경을 크림 베이지로, 버튼을 세이지 그린으로 바꿔줘." 📋
+          </span>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- 6. 스마트폰 링크 공유 (Share) -->
-  <section id="section-share">
-    <h2>📱 6. 스마트폰 링크 공유 (Share) 및 현장 필수 설정</h2>
-    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 14px;">
-      스마트폰에서 링크를 열었을 때 "접근 권한이 없습니다(Restricted)" 에러가 터지지 않게 막는 결정적인 1초 세팅 가이드입니다.
-    </p>
-
-    <!-- 필수 보안/설정 경고창 (실제 화면 캡처 연계) -->
-    <div class="share-alert">
-      <strong>🚨 [강사 필독 지도 지침] Share 창 3대 안전 수칙:</strong><br>
-      1. <strong>General access:</strong> 기본값인 <code>🔒 Restricted</code>로 두면 스마트폰에서 절대 열리지 않습니다! 반드시 <strong><code>🌐 Public: Anyone with the link can view</code></strong>로 바꾸도록 강하게 안내하세요.<br>
-      2. <strong>Settings:</strong> <code>Include your Gemini chat history</code>는 <strong>반드시 꺼짐(OFF) 상태를 유지</strong>하도록 지도하세요. (프롬프트 및 사역 대화 보호)<br>
-      3. <strong>상단 탭 주의:</strong> <code>Publish</code>는 누르지 마세요! 클라우드 유료 결제 설정이 뜰 수 있습니다. 만약 유료 결제 창이 뜨면 즉시 강사를 부르도록 통제합니다.
-    </div>
-
-    <!-- 실제 스크린샷 이미지 -->
-    <div style="text-align: center; margin: 18px 0;">
-      <img src="화면설명/7.공유시 공개설정.png" alt="Share 설정 실제 화면" style="max-width: 100%; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 14px rgba(0,0,0,0.12);">
-      <p style="font-size: 13px; color: #475569; margin-top: 8px; font-weight: 600;">▲ 위 화면에서 반드시 Restricted를 눌러 <strong>Public: Anyone with the link can view</strong>로 변경해야 합니다!</p>
-    </div>
-
-    <!-- [스크린샷 7 자리] -->
-    <div class="screenshot-placeholder">
-      <div class="placeholder-tag">📷 스크린샷 첨부 위치 #7</div>
-      <div class="placeholder-title">스마트폰 홈 화면 추가 완료 모습 (아이폰 & 갤럭시)</div>
-      <div class="placeholder-desc">스마트폰 브라우저에서 '홈 화면에 추가'를 눌러 바탕화면에 앱 아이콘이 깔린 모습을 캡처하여 배치하세요.</div>
-      <div class="placeholder-guide">
-        &lt;!-- &lt;img src="images/07_mobile_home_screen_install.png" alt="Mobile Install Guide" style="max-width:100%; border-radius:8px;"&gt; --&gt;
+      <div class="checkpoint" style="margin-top: 16px;">
+        ✨ <strong>확인 미션:</strong> 내가 입력한 한 줄 지시에 맞춰 오른쪽 화면이 진짜로 바뀌었나요? 이게 바로 '바이브 코딩'입니다!
       </div>
     </div>
-  </section>
 
-  <!-- 7. 수강생 자립 장치 -->
-  <section id="section-independence">
-    <h2>🚀 7. 수강생 자립을 위한 3대 핵심 장치</h2>
-    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
-      수강생이 워크숍 후 집에 가서도 혼자 힘으로 아이디어를 앱으로 만들 수 있도록 연결해 주는 교육 설계 브릿지입니다.
-    </p>
-
-    <!-- 장치 1 -->
-    <div style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-      <h3 style="color: var(--primary); font-size: 16px; margin-top:0;">장치 1: 4부의 '단어 치환 3분 미션' (단어만 바꿔서 새 앱 만들기)</h3>
-      <p style="font-size: 13.5px; color: #475569; margin-bottom: 12px;">
-        수강생들에게 좌측 메뉴의 <code>+ New app</code>을 누르게 한 뒤, Step 1 프롬프트에서 단어 3개만 자기 업무나 일상 단어로 바꿔 엔터를 치게 합니다.
+    <!-- New Section 1: 단어 치환 3분 미션 (자립 실습) -->
+    <div class="independence-card">
+      <h3><span class="step-tag tag-mission">3부 자립 미션</span> 단어 3개만 바꿔서 '내 업무/가정용 앱' 만들기 (3분)</h3>
+      <p style="font-size: 13.5px; color: #475569; margin-bottom: 14px;">
+        AI Studio 화면 좌측 상단의 <strong><code>+ New app</code></strong>을 누르고, Step 1 프롬프트에서 단어 3개만 바꿔 붙여넣어 보세요!
       </p>
-      <div style="background: #f1f5f9; padding: 14px; border-radius: 8px; font-size: 13.5px; line-height: 1.8;">
-        • <strong>순원 이름</strong> ➔ <code>거래처명</code> (또는 <code>팀원 이름</code>, <code>우리 아이 이름</code>)<br>
-        • <strong>출석 체크</strong> ➔ <code>입금 확인</code> (또는 <code>주간 업무 완료</code>, <code>오늘 칭찬 스티커</code>)<br>
-        • <strong>기도제목</strong> ➔ <code>미수금 메모</code> (또는 <code>주간 핵심 이슈</code>, <code>칭찬 한마디</code>)
+
+      <div style="background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; margin-bottom: 14px; font-size: 13.5px; line-height: 1.8;">
+        • <strong>순원 이름</strong> ➔ <span style="background:#fef08a; padding:2px 6px; border-radius:4px; font-weight:700;">거래처명</span> (또는 팀원 이름, 우리 아이 이름)<br>
+        • <strong>출석 체크</strong> ➔ <span style="background:#fef08a; padding:2px 6px; border-radius:4px; font-weight:700;">입금 완료 여부</span> (또는 주간 업무 완료, 칭찬 스티커)<br>
+        • <strong>기도제목</strong> ➔ <span style="background:#fef08a; padding:2px 6px; border-radius:4px; font-weight:700;">미수금 및 상담 메모</span> (또는 주간 핵심 이슈, 칭찬 한마디)
       </div>
     </div>
 
-    <!-- [스크린샷 6 자리] -->
-    <div class="screenshot-placeholder">
-      <div class="placeholder-tag">📷 스크린샷 첨부 위치 #6</div>
-      <div class="placeholder-title">단어 치환 실무 대시보드 (팀 주간 업무 To-Do 앱)</div>
-      <div class="placeholder-desc">'순원'이 '팀원'으로, '기도제목'이 '업무 보고'로 바뀐 실제 회사용 대시보드 화면을 캡처하여 배치하세요.</div>
-      <div class="placeholder-guide">
-        &lt;!-- &lt;img src="images/06_word_replacement_office_app.png" alt="Office App Example" style="max-width:100%; border-radius:8px;"&gt; --&gt;
-      </div>
-    </div>
-
-    <!-- 장치 2 -->
-    <div style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-      <h3 style="color: var(--primary); font-size: 16px; margin-top:0;">장치 2: 집에 가서 혼자 쓰는 '3문장 만능 공식'</h3>
-      <p style="font-size: 13.5px; color: #475569; margin-bottom: 12px;">
-        복잡한 프롬프트는 잊어도 이 3문장 뼈대만 기억하면 어떤 웹앱이든 백지에서 시작할 수 있습니다.
+    <!-- New Section 2: 3문장 만능 공식 (선물 카드) -->
+    <div class="independence-card" style="border: 2px solid #3b82f6;">
+      <h3 style="color: #1e40af;">🎁 집에 가서 혼자 쓰는 '3문장 만능 공식' (선물)</h3>
+      <p style="font-size: 13.5px; color: #475569;">
+        긴 프롬프트를 외우실 필요가 없습니다! 집에 가서 나만의 아이디어를 앱으로 만들 때 아래 <strong>3문장 뼈대</strong>만 메모장에 채워 넣으세요.
       </p>
-      <div style="background: #1e293b; color: #f8fafc; padding: 16px; border-radius: 8px; font-family: monospace; font-size: 13px; line-height: 1.8;">
+
+      <div class="formula-box">
         [1문장 - 뭐 만들지?] : 모바일에서 쓰는 깔끔한 '[ OO 관리 ]' 웹앱 만들어줘.<br>
         [2문장 - 뭐 들어가지?] : 화면에 [ A, B, C ]를 보여주고, 버튼을 누르면 [ D ]가 되게 해줘.<br>
         [3문장 - 실행해줘] : 서버 없이 브라우저에서 바로 동작하게 오른쪽 화면에 실행해줘.
       </div>
-    </div>
 
-    <!-- 장치 3 -->
-    <div style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
-      <h3 style="color: var(--primary); font-size: 16px; margin-top:0;">장치 3: AI와 대화하며 말로 고치는 법 (Vibe 코딩의 본질)</h3>
-      <p style="font-size: 13.5px; color: #475569; line-height: 1.7;">
-        첫 프롬프트로 완벽하게 만들려 하지 말고, 나온 화면을 보며 카카오톡 하듯이 <em>"글자 크기 좀 키워줘", "버튼 색깔 핑크색으로 바꿔줘", "체크하면 줄 그어지게 해줘"</em>라고 한 줄씩 대화로 다듬어가는 경험을 심어줍니다.
+      <p style="font-size: 13px; color: #64748b; margin-top: 10px;">
+        💡 <strong>Vibe 코딩의 핵심:</strong> 처음부터 완벽한 문장을 쓸 필요가 전혀 없습니다. 나온 화면을 보며 친구에게 카톡 하듯이 <em>"글자 크기 좀 키워줘", "버튼 색깔 바꿔줘"</em>라고 말로 수정 지시를 내리시면 됩니다.
       </p>
     </div>
-  </section>
 
-  <!-- 8. 대기시간 & 트러블슈팅 -->
-  <section id="section-tips">
-    <h2>🎤 8. 생성 대기시간 강사 멘트 & 현장 위기 대응</h2>
-
-    <div style="margin-bottom: 24px;">
-      <h3 style="font-size: 16px; color: var(--primary-dark); margin-bottom: 10px;">프롬프트 엔터 후 생성 대기 시간 동안 강사가 할 말:</h3>
-      <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 16px 20px; border-radius: 10px; font-size: 14px; line-height: 1.8;">
-        <strong>"순장님들, 엔터 누르셨죠? 지금 화면이 멈춘 것 같아도 절대 새로고침 단축키를 누르지 마세요!</strong><br>
-        AI가 여러분이 지시한 요구사항에 맞춰 화면 레이아웃과 동작 기능을 조립하고 있는 중입니다. 잠시 생성 시간이 필요하니 기다려 보겠습니다.<br>
-        (스타일 편차 안심 멘트) 그리고 잠시 후 화면이 떴을 때, <strong>옆 사람과 버튼 색상이나 배치가 조금 다를 수 있습니다.</strong> AI가 각자의 지시에 맞춰 독창적으로 만드는 중이니 지극히 정상입니다!<br>
-        잠시 후 오른쪽에 스마트폰 화면이 딱 켜지면, 우리가 넣었던 가상 순원 <strong>'은지'와 '수진'이 이름이 표에 쏙 들어가 있는지</strong> 그것부터 눈으로 콕 집어보세요!"
+    <!-- Emergency Help & FAQ -->
+    <div class="faq-section">
+      <h3>💡 현장 긴급 처방 & FAQ</h3>
+      <div class="faq-item">
+        <div class="faq-q">Q. 엔터를 쳤는데 화면이 멈춘 것 같아요!</div>
+        <div class="faq-a">A. AI가 코드를 조립하고 실행하는 중입니다. <strong>절대 새로고침(F5 / Cmd+R)을 누르지 마시고 잠시 기다려주세요.</strong></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 화면이 하얗게 변하거나 빨간 에러가 떴어요!</div>
+        <div class="faq-a">A. AI Studio 대화창에 <code>"방금 수정을 취소하고 이전 정상 작동 상태로 되돌려줘"</code>라고 치시면 복구됩니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. Share를 눌렀는데 유료 결제(Billing)나 카드 등록 화면이 나와요!</div>
+        <div class="faq-a">A. <strong>진행하지 마시고 손을 들어 강사를 불러주세요!</strong> 상단의 Publish를 누르지 않고 Share 탭의 Copy link만 사용해야 합니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 스마트폰에서 링크를 눌렀더니 '접근 권한이 없습니다'라고 떠요!</div>
+        <div class="faq-a">A. General access를 <strong>Public</strong>으로 바꾸지 않으셔서 그렇습니다. [1. 화면 설명 가이드 탭]의 Part 4를 참고하여 Restricted를 <strong>Public: Anyone with the link can view</strong>로 바꾼 뒤 다시 링크를 복사해 보내세요!</div>
       </div>
     </div>
 
-    <div>
-      <h3 style="font-size: 16px; color: var(--primary-dark); margin-bottom: 10px;">현장 돌발상황 즉각 해결법 (Troubleshooting):</h3>
-      <ul style="font-size: 14px; line-height: 1.8; padding-left: 20px;">
-        <li><strong>화면이 하얗게 멈추거나 에러가 날 때:</strong> 채팅창에 <code>"방금 수정을 취소하고 이전 정상 작동 상태로 되돌려줘"</code> 입력.</li>
-        <li><strong>스마트폰에서 '권한 없음(Restricted)' 뜰 때:</strong> 노트북 AI Studio에서 Share 창을 열고 General access를 <code>🌐 Public</code>으로 바꾼 뒤 다시 링크 복사.</li>
-        <li><strong>Share 누를 때 결제/프로젝트 창이 뜰 때:</strong> <code>Publish</code> 탭을 잘못 누른 것이므로, <code>Share</code> 탭으로 돌아오도록 안내. 유료 결제 창은 진행하지 않고 강사 호출.</li>
-        <li><strong>PC 카톡이 안 깔린 노트북:</strong> 하단에 상시 텍스트 박스가 보이므로, 메모장을 켜서 <code>Ctrl+V (Mac: Cmd+V)</code> 테스트하도록 안내.</li>
-      </ul>
-    </div>
-  </section>
+  </main>
 
-  <!-- 9. 파트별 강의 대본 (Full Script) -->
-  <section id="section-scripts">
-    <h2>🎙️ 9. 파트별 상세 강의 대본 (Full Script)</h2>
-    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
-      현장에서 강사가 그대로 읽거나 참고할 수 있는 실전형 스크립트입니다.
-    </p>
-
-    <!-- 대본 1 -->
-    <div class="script-block">
-      <div class="script-header">
-        <span class="script-action">[1부: 00~10분] 오프닝 & 완성작 라이브 시연</span>
-        <span>시선: 수강생 눈맞춤 ➜ 화면 전환</span>
-      </div>
-      <div class="script-body">
-        "순장님들, 일주일 동안 직장에서 야근하시고, 또 주말에는 순원들 챙기시느라 정말 수고 많으셨습니다. 늘 시간이 부족하시죠? 금요일 밤마다 '순원들 이번 주 기도제목이 뭐였더라?', '누가 결석했더라?' 카톡 대화방 위로 한참 올려보며 메모장에 옮겨 적으셨던 경험, 다들 있으실 겁니다.<br><br>
-        오늘 이 자리는 여러분을 프로그래머로 만들기 위한 자리가 아닙니다. 복잡한 코딩 언어, 영어 기호, 단 하나도 몰라도 괜찮습니다. 오늘 여러분은 사역과 일터에서 여러분을 보좌할 'AI 비서'를 채용하러 오신 겁니다.<br><br>
-        제가 화면으로 딱 2개만 보여드리겠습니다. 제가 AI와 우리말로 대화하며 만든 웹앱입니다.<br>
-        첫 번째, <strong>'우리 순 전용 스마트 케어노트'</strong>입니다. 은지가 출석했으면 체크박스 탁! 기도제목 치고, [카톡 문구 복사] 버튼을 누르면? 제 카톡 나와의 채팅방에 오늘 날짜, 출석 현황, 순원 기도제목이 카톡 전용 양식으로 깔끔하게 전송됩니다.<br>
-        두 번째는 내일 출근해서 바로 써먹는 <strong>'팀 주간 To-Do 취합 대시보드'</strong>입니다.<br>
-        순장님들, 오늘 이 워크숍이 끝날 때, 여러분은 이 '스마트 케어노트'를 직접 완성해 가실 겁니다. 저만 믿고 따라오시면 됩니다!"
-      </div>
-    </div>
-
-    <!-- 대본 2 -->
-    <div class="script-block">
-      <div class="script-header">
-        <span class="script-action">[1부: 10~25분] 화면 투어 & 직관 2원칙</span>
-        <span>행동: 화면의 Preview, Prompt, Share 3곳 짚기</span>
-      </div>
-      <div class="script-body">
-        "AI Studio 화면에 접속하셨습니다. 비개발자에게 가장 중요한 원칙은 <strong>'쳐다보지 말아야 할 곳을 안 쳐다보는 것'</strong>입니다! 좌측의 Playground나 대시보드, 그리고 화면 위의 &lt;&gt; Code 탭은 복잡한 개발 코드 영역이니 누르지 마세요.<br><br>
-        우리는 딱 3가지만 봅니다. ① 오른쪽 스마트폰 화면(Preview), ② 왼쪽 아래 지시창(Prompt Bar), ③ 오른쪽 맨 위 스마트폰 전송 버튼(Share)!<br>
-        그리고 AI한테 지시할 때는 두 가지만 지키세요. 첫째, 사족 끄고 원하는 결과와 조건을 명확히 말한다! 둘째, 한 번에 다 시키지 말고 기둥 세우고 지붕 얹듯이 순서대로 살을 붙인다!"
-      </div>
-    </div>
-
-    <!-- 대본 3 -->
-    <div class="script-block">
-      <div class="script-header">
-        <span class="script-action">[2부: 35~90분] Step 1~3 메인 실습 & 공식 수료</span>
-        <span>행동: 순회하며 Mac 단축키 및 새로고침 대기 지도</span>
-      </div>
-      <div class="script-body">
-        (Step 1 진행) "교안에서 Step 1 프롬프트 복사를 누르시고, AI Studio 대화창에 붙여넣고 엔터를 치세요! 지금 AI가 화면을 조립하고 있으니 새로고침 누르지 마시고 잠시 기다립니다. 자, 오른쪽에 스마트폰 켜졌죠? 은지와 수진이 이름 확인하시고 체크박스 눌러보세요!"<br><br>
-        (Step 2 진행) "지금은 창 닫으면 날아가니까 브라우저 안에 '개인 서랍장'을 달아주겠습니다. Step 2 복사해서 넣으세요! 완성되면 은지 기도제목에 글씨 쓰고, 키보드 F5(Mac: Cmd+R)를 누르세요! 살아있습니까? 이제 심방 가서 폰 꺼져도 데이터 안 날아갑니다!"<br><br>
-        (Step 3 진행) "오늘의 공식 수료선입니다. Step 3 복사해서 엔터 치세요! 하단에 카톡 박스 생겼죠? [카톡 문구 복사하기] 누르고 본인 카톡 '나와의 채팅방'에 Ctrl+V(Mac: Cmd+V) 붙여넣으세요! 카톡으로 깔끔한 보고서가 도착하신 분, 손 번쩍 드세요! 전원 오늘 공식 수료입니다!"
-      </div>
-    </div>
-
-    <!-- 대본 4 -->
-    <div class="script-block">
-      <div class="script-header">
-        <span class="script-action">[3부: 90~115분] 진짜 바이브 코딩 (직접 수정 1회) & 버퍼</span>
-        <span>행동: 수강생들이 직접 말로 수정하도록 격려</span>
-      </div>
-      <div class="script-body">
-        "순장님들, 지금까지는 제가 드린 프롬프트를 복사하셨죠? 이제 진짜 바이브 코딩을 해보겠습니다. <strong>내 말로 내가 원하는 것 딱 하나만 AI한테 시켜보는 겁니다.</strong><br>
-        '출석 체크하면 배경을 초록색으로 바꿔줘'도 좋고, '헤더에 오늘 출석 인원수가 보이게 해줘'도 좋습니다. 완벽한 문장 쓸 필요 없습니다. 친구에게 카톡 하듯이 편하게 지시해 보세요!<br><br>
-        (버퍼 시간 운영) 그리고 혹시 아직 Step 3에 머물러 계신 분들은 전혀 걱정하지 마세요. 제가 1:1로 봐드리고, 필요하시면 강사 완성본 링크를 바로 열어드리겠습니다."
-      </div>
-    </div>
-
-    <!-- 대본 5 -->
-    <div class="script-block">
-      <div class="script-header">
-        <span class="script-action">[4부: 115~140분] Share 주의사항 & 일터 확장</span>
-        <span>행동: Share 창의 Restricted ➔ Public 변경 화면 빔프로젝터 강조</span>
-      </div>
-      <div class="script-body">
-        "내 스마트폰으로 링크를 보내보겠습니다. 오른쪽 맨 위 파란색 [Share] 버튼 누르세요!<br>
-        <strong>여기서 제일 중요한 점!</strong> General access가 'Restricted'로 되어 있으면 스마트폰에서 절대 안 열립니다. 반드시 클릭해서 <strong>'Public: Anyone with the link can view'</strong>로 바꿔주세요! 그리고 Settings의 채팅 기록 포함은 꺼짐 상태를 유지합니다. 이제 [Copy link] 누르고 내 카톡으로 전송하세요.<br><br>
-        (일터 확장 실습) 이제 좌측 메뉴에서 <code>+ New app</code>을 누르세요. 그리고 Step 1 프롬프트에서 '순원' 대신 '팀원', '기도제목' 대신 '주간 To-Do'로 3단어만 바꿔 엔터를 쳐보세요. 1분 만에 내일 출근해서 쓸 수 있는 업무 대시보드가 완성됩니다!"
-      </div>
-    </div>
-
-    <!-- 대본 6 -->
-    <div class="script-block">
-      <div class="script-header">
-        <span class="script-action">[마무리: 140~150분] 대표 나눔 & 축복 클로징</span>
-        <span>시선: 전체 수강생을 따뜻하게 축복</span>
-      </div>
-      <div class="script-body">
-        "자, 대표로 두 분만 본인 스마트폰에 띄운 화면을 비춰주시겠어요? (대표 2명 확인 후) 나머지 순장님들도 스마트폰 화면을 번쩍 들어 옆 순장님께 보여주세요! 박수 한번 칩시다!<br><br>
-        오늘 우리가 배운 것은 컴퓨터 기술이 아니라 '시간의 청지기'가 되는 법입니다. 종이에 적고 카톡 스크롤 올리느라 허비했던 시간들을 줄여냈습니다. 그렇게 아낀 에너지를 지친 순원의 손을 잡아주고, 동료를 배려하는 사랑의 섬김에 쏟으십시오. 우리 순장님들의 사역과 일터 위에 하나님의 지혜와 평강이 늘 넘치시기를 축복합니다. 수고 많으셨습니다!"
-      </div>
-    </div>
-  </section>
+  <footer>
+    <p>문의 & 도우미: <strong>AI 미션그룹</strong> | <a href="teacher.html" style="color: #64748b; text-decoration: underline; font-size: 12px;">👨‍🏫 강사용 통합 지도안 열기</a></p>
+  </footer>
 
 </div>
 
 <!-- Toast Popup -->
-<div id="toast">📋 프롬프트가 클립보드에 복사되었습니다!</div>
+<div id="toast">📋 프롬프트가 복사되었습니다! AI Studio에 붙여넣기 하세요.</div>
+
+<!-- ========================================== -->
+<!-- [라이트박스 모달] 이미지 확대 뷰어         -->
+<!-- ========================================== -->
+<div id="lightboxModal" class="lightbox-modal" onclick="onModalBgClick(event)">
+  <div class="lightbox-header">
+    <div class="lightbox-title" id="lightboxTitle">
+      📷 <strong>화면 설명 사진 크게 보기</strong>
+    </div>
+    <div class="lightbox-actions">
+      <button class="lightbox-btn" onclick="toggleZoom(event)" title="1.5배 확대 / 기본 맞춤 토글">
+        🔍 <span id="zoomBtnText">1.5배 확대</span>
+      </button>
+      <button class="lightbox-btn lightbox-btn-close" onclick="closeLightbox(event)">
+        ✕ 닫기 (ESC)
+      </button>
+    </div>
+  </div>
+
+  <div class="lightbox-body">
+    <button class="lightbox-nav-btn lightbox-nav-prev" onclick="prevImage(event)" title="이전 사진 (← 키)">◀</button>
+    
+    <div class="lightbox-img-wrapper" onclick="toggleZoom(event)">
+      <img id="lightboxImg" class="lightbox-img" src="" alt="화면 설명 확대 이미지">
+    </div>
+
+    <button class="lightbox-nav-btn lightbox-nav-next" onclick="nextImage(event)" title="다음 사진 (→ 키)">▶</button>
+  </div>
+
+  <div class="lightbox-footer">
+    <span>💡 키보드 방향키(←, →)로 이동 가능, ESC로 닫기 | 이미지를 누르면 1.3배 확대됩니다</span>
+    <span class="lightbox-counter" id="lightboxCounter">1 / 10</span>
+  </div>
+</div>
 
 <script>
+  // Tab Switching
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+    if (tabName === 'guide') {
+      document.getElementById('btn-guide').classList.add('active');
+      document.getElementById('tab-guide').classList.add('active');
+      window.location.hash = '#guide';
+    } else {
+      document.getElementById('btn-practice').classList.add('active');
+      document.getElementById('tab-practice').classList.add('active');
+      window.location.hash = '#practice';
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Lightbox Data & Logic
+  const guideImages = [
+    { src: '화면설명/1.초기화면.png', title: '화면 01: AI Studio 접속 첫 화면 (Playground)' },
+    { src: '화면설명/2.앱 개발화면.png', title: '화면 02: 새 앱 시작하기 (+ New app)' },
+    { src: '화면설명/3.내 앱리스트-1.png', title: '화면 03-1: 내가 만든 앱 보관함 (My apps)' },
+    { src: '화면설명/3.내 앱리스트-2.png', title: '화면 03-2: 내 앱 상세 목록' },
+    { src: '화면설명/4.겔러리-남들이 한것들.png', title: '화면 04: 전 세계 사용자들의 작품 둘러보기 (Gallery)' },
+    { src: '화면설명/5.셋팅버튼.png', title: '화면 05: 우측 상단 셋팅(톱니바퀴) 버튼' },
+    { src: '화면설명/6.ai모델셋팅.png', title: '화면 06: AI 모델 확인 (Gemini 3.8 Flash)' },
+    { src: '화면설명/7.공유시 공개설정.png', title: '화면 07: [필수 1단계] General access ➔ Public 설정' },
+    { src: '화면설명/8.채팅 기록끄기.png', title: '화면 08: [필수 2단계] Gemini chat history 꺼짐(OFF) 확인' },
+    { src: '화면설명/9.공유버튼.png', title: '화면 09: [필수 3단계] 하단 [Copy link] 클릭하여 카톡 전송' }
+  ];
+
+  let currentImgIndex = 0;
+  let isZoomed = false;
+
+  function openLightbox(index) {
+    currentImgIndex = index;
+    isZoomed = false;
+    updateLightbox();
+    document.getElementById('lightboxModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(e) {
+    if (e) e.stopPropagation();
+    document.getElementById('lightboxModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function onModalBgClick(e) {
+    if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-body') || e.target.classList.contains('lightbox-img-wrapper')) {
+      closeLightbox();
+    }
+  }
+
+  function updateLightbox() {
+    const item = guideImages[currentImgIndex];
+    if (!item) return;
+
+    const modalImg = document.getElementById('lightboxImg');
+    const modalTitle = document.getElementById('lightboxTitle');
+    const modalCounter = document.getElementById('lightboxCounter');
+    const zoomBtnText = document.getElementById('zoomBtnText');
+    const wrapper = document.querySelector('.lightbox-img-wrapper');
+
+    modalImg.src = item.src;
+    modalImg.alt = item.title;
+    modalTitle.innerHTML = `📷 <strong>${item.title}</strong>`;
+    modalCounter.innerText = `${currentImgIndex + 1} / ${guideImages.length}`;
+
+    modalImg.classList.remove('zoomed');
+    isZoomed = false;
+    if (zoomBtnText) zoomBtnText.innerText = '1.5배 확대';
+    if (wrapper) wrapper.style.cursor = 'default';
+  }
+
+  function prevImage(e) {
+    if (e) e.stopPropagation();
+    currentImgIndex = (currentImgIndex - 1 + guideImages.length) % guideImages.length;
+    updateLightbox();
+  }
+
+  function nextImage(e) {
+    if (e) e.stopPropagation();
+    currentImgIndex = (currentImgIndex + 1) % guideImages.length;
+    updateLightbox();
+  }
+
+  function toggleZoom(e) {
+    if (e) e.stopPropagation();
+    const modalImg = document.getElementById('lightboxImg');
+    const zoomBtnText = document.getElementById('zoomBtnText');
+    const wrapper = document.querySelector('.lightbox-img-wrapper');
+    isZoomed = !isZoomed;
+    if (isZoomed) {
+      modalImg.classList.add('zoomed');
+      if (zoomBtnText) zoomBtnText.innerText = '화면 맞춤 (원래대로)';
+      if (wrapper) {
+        wrapper.style.cursor = 'grab';
+        setTimeout(() => {
+          wrapper.scrollLeft = 0;
+          wrapper.scrollTop = 0;
+        }, 40);
+      }
+    } else {
+      modalImg.classList.remove('zoomed');
+      if (zoomBtnText) zoomBtnText.innerText = '1.5배 확대';
+      if (wrapper) wrapper.style.cursor = 'default';
+    }
+  }
+
+  // Lightbox Drag Panning
+  let isDragging = false;
+  let startX, startY, scrollStartX, scrollStartY;
+
+  function initDragScroll() {
+    const wrapper = document.querySelector('.lightbox-img-wrapper');
+    if (!wrapper) return;
+
+    wrapper.addEventListener('mousedown', (e) => {
+      if (!isZoomed) return;
+      isDragging = true;
+      wrapper.style.cursor = 'grabbing';
+      startX = e.pageX - wrapper.offsetLeft;
+      startY = e.pageY - wrapper.offsetTop;
+      scrollStartX = wrapper.scrollLeft;
+      scrollStartY = wrapper.scrollTop;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        const wrapper = document.querySelector('.lightbox-img-wrapper');
+        if (wrapper && isZoomed) wrapper.style.cursor = 'grab';
+      }
+    });
+
+    wrapper.addEventListener('mousemove', (e) => {
+      if (!isDragging || !isZoomed) return;
+      e.preventDefault();
+      const x = e.pageX - wrapper.offsetLeft;
+      const y = e.pageY - wrapper.offsetTop;
+      wrapper.scrollLeft = scrollStartX - (x - startX);
+      wrapper.scrollTop = scrollStartY - (y - startY);
+    });
+  }
+
+  // URL hash check & Events
+  window.addEventListener('DOMContentLoaded', () => {
+    initDragScroll();
+
+    if (window.location.hash === '#practice') {
+      switchTab('practice');
+    } else {
+      switchTab('guide');
+    }
+
+    // Attach click events to all guide images
+    const boxes = document.querySelectorAll('.guide-img-box');
+    boxes.forEach((box, idx) => {
+      box.addEventListener('click', () => openLightbox(idx));
+    });
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('lightboxModal');
+      if (!modal || !modal.classList.contains('active')) return;
+
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    });
+  });
+
+  // Prompt Copy Functions
   function copyPrompt(elementId, btn) {
     const text = document.getElementById(elementId).innerText;
+    copyToClipboard(text, btn, '✔ 복사 완료! (AI Studio에 붙여넣으세요)');
+  }
+
+  function copyDirectText(text, element) {
+    copyToClipboard(text, element, '✔ 문구 복사 완료! AI Studio에 붙여넣으세요');
+  }
+
+  function copyToClipboard(text, btnElement, successMsg) {
     navigator.clipboard.writeText(text).then(() => {
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '✔ 복사 완료!';
-      btn.classList.add('copied');
+      const originalText = btnElement.innerHTML;
+      btnElement.innerHTML = successMsg;
+      btnElement.classList.add('copied');
       
       const toast = document.getElementById('toast');
+      toast.innerText = '📋 ' + successMsg;
       toast.classList.add('show');
       
       setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.classList.remove('copied');
+        btnElement.innerHTML = originalText;
+        btnElement.classList.remove('copied');
         toast.classList.remove('show');
-      }, 2000);
+      }, 2500);
     }).catch(err => {
       alert('복사에 실패했습니다. 마우스로 드래그하여 복사해 주세요.');
     });
   }
-
-  // Smooth TOC Active indicator
-  window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    const scrollPos = window.scrollY + 100;
-
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-      const link = document.querySelector(`.toc-link[href="#${id}"]`);
-
-      if (link && scrollPos >= top && scrollPos < top + height) {
-        document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  });
 </script>
 
 </body>
