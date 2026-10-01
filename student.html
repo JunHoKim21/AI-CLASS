@@ -36,12 +36,15 @@
       font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg);
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.65;
       padding: 24px 16px;
+      font-size: 17px;
+      word-break: keep-all;
+      word-wrap: break-word;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 920px;
       margin: 0 auto;
     }
 
@@ -49,9 +52,9 @@
     header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: white;
-      padding: 30px 24px;
-      border-radius: 18px;
-      margin-bottom: 20px;
+      padding: 34px 26px;
+      border-radius: 20px;
+      margin-bottom: 22px;
       box-shadow: 0 10px 20px -5px rgba(45, 90, 67, 0.2);
       text-align: center;
     }
@@ -60,57 +63,57 @@
       display: inline-block;
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(8px);
-      padding: 4px 12px;
+      padding: 6px 16px;
       border-radius: 9999px;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
     }
 
     header h1 {
-      font-size: 24px;
+      font-size: 30px;
       font-weight: 800;
       line-height: 1.35;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
     header p {
-      font-size: 14px;
-      opacity: 0.92;
+      font-size: 17px;
+      opacity: 0.95;
     }
 
     .fill-box {
       display: inline-block;
       background: var(--highlight);
-      padding: 2px 6px;
-      border-radius: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
       border: 1px dashed #ca8a04;
       color: #854d0e;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 15.5px;
     }
 
     /* Main Tab Navigation */
     .main-tabs {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       margin-bottom: 24px;
       background: #e2e8f0;
-      padding: 6px;
-      border-radius: 14px;
+      padding: 8px;
+      border-radius: 16px;
       position: sticky;
       top: 12px;
       z-index: 100;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .tab-btn {
       flex: 1;
-      padding: 13px 16px;
+      padding: 15px 20px;
       border: none;
-      border-radius: 10px;
-      font-size: 14.5px;
-      font-weight: 750;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 800;
       cursor: pointer;
       background: transparent;
       color: #475569;
@@ -118,14 +121,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       font-family: inherit;
     }
 
     .tab-btn.active {
       background: white;
       color: var(--primary-dark);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.09);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
     }
 
     .tab-content {
@@ -146,26 +149,26 @@
     .launch-bar {
       background: white;
       border: 2px solid var(--primary);
-      border-radius: 14px;
-      padding: 16px 20px;
-      margin-bottom: 16px;
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
       box-shadow: 0 4px 12px rgba(45, 90, 67, 0.08);
     }
 
     .launch-info h3 {
-      font-size: 15.5px;
+      font-size: 19.5px;
       color: var(--primary-dark);
-      font-weight: 700;
-      margin-bottom: 2px;
+      font-weight: 800;
+      margin-bottom: 4px;
     }
 
     .launch-info p {
-      font-size: 13px;
+      font-size: 15.5px;
       color: var(--text-muted);
     }
 
@@ -173,13 +176,13 @@
       background: var(--primary);
       color: white;
       text-decoration: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 13.5px;
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 16.5px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: background 0.2s;
     }
 
@@ -189,7 +192,7 @@
     .env-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 14px;
       margin-bottom: 24px;
     }
 
@@ -198,10 +201,10 @@
     }
 
     .env-box {
-      padding: 14px 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      line-height: 1.55;
+      padding: 16px 18px;
+      border-radius: 12px;
+      font-size: 15.5px;
+      line-height: 1.65;
     }
 
     .env-box-warning {
@@ -218,53 +221,53 @@
 
     /* Guide Card Styling (Tab 1) */
     .guide-section-title {
-      font-size: 19px;
+      font-size: 23px;
       font-weight: 800;
       color: var(--primary-dark);
-      margin: 28px 0 14px 0;
-      padding-bottom: 8px;
+      margin: 32px 0 16px 0;
+      padding-bottom: 10px;
       border-bottom: 2px solid var(--primary-light);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .guide-card {
       background: white;
-      border-radius: 16px;
+      border-radius: 18px;
       border: 1px solid var(--border);
-      padding: 22px;
+      padding: 24px;
       margin-bottom: 24px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
 
     .guide-card-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     .guide-badge {
       background: var(--primary);
       color: white;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 6px;
+      font-size: 14.5px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 8px;
     }
 
     .guide-card-title {
-      font-size: 16.5px;
-      font-weight: 750;
+      font-size: 20.5px;
+      font-weight: 800;
       color: var(--text-main);
     }
 
     .guide-card-desc {
-      font-size: 13.5px;
-      color: #475569;
-      line-height: 1.6;
-      margin-bottom: 14px;
+      font-size: 16.5px;
+      color: #334155;
+      line-height: 1.7;
+      margin-bottom: 16px;
     }
 
     .guide-card-desc strong {
@@ -519,22 +522,22 @@
 
     .guide-tip {
       background: #f8fafc;
-      border-left: 4px solid var(--accent);
-      padding: 10px 14px;
-      border-radius: 6px;
-      font-size: 12.5px;
+      border-left: 5px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: 15.5px;
       color: #7c2d12;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     /* Step Card Styling (Tab 2) */
     .step-section {
       background: white;
-      border-radius: 16px;
+      border-radius: 18px;
       border: 1px solid var(--border);
-      padding: 22px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      padding: 24px;
+      margin-bottom: 26px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
 
     .step-header {
@@ -542,21 +545,22 @@
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     .step-title-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .step-tag {
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 14.5px;
+      font-weight: 800;
     }
 
     .tag-must { background: #fee2e2; color: #991b1b; }
@@ -565,104 +569,105 @@
     .tag-mission { background: #dcfce7; color: #166534; }
 
     .step-title {
-      font-size: 17px;
-      font-weight: 750;
+      font-size: 21px;
+      font-weight: 800;
       color: var(--text-main);
     }
 
     .step-desc {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      line-height: 1.55;
+      font-size: 16.5px;
+      color: #475569;
+      margin-bottom: 16px;
+      line-height: 1.65;
     }
 
     /* Prompt Box with One-Click Copy */
     .prompt-box {
       background: #1e293b;
-      border-radius: 12px;
-      padding: 16px 18px;
+      border-radius: 14px;
+      padding: 20px 22px;
       position: relative;
     }
 
     .prompt-content {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 13px;
-      line-height: 1.65;
+      font-size: 16.5px;
+      line-height: 1.75;
       white-space: pre-wrap;
       word-break: break-all;
-      color: #e2e8f0;
-      margin-bottom: 14px;
+      color: #f1f5f9;
+      margin-bottom: 16px;
     }
 
     .copy-btn {
       background: #0ea5e9;
       color: white;
       border: none;
-      padding: 9px 16px;
-      border-radius: 6px;
-      font-size: 13.5px;
-      font-weight: 700;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-size: 17.5px;
+      font-weight: 800;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       width: 100%;
       justify-content: center;
-      transition: background 0.2s;
+      transition: all 0.2s;
+      box-shadow: 0 4px 10px rgba(14, 165, 233, 0.25);
     }
 
-    .copy-btn:hover { background: #0284c7; }
-    .copy-btn.copied { background: #10b981; }
+    .copy-btn:hover { background: #0284c7; transform: translateY(-1px); }
+    .copy-btn.copied { background: #10b981; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3); }
 
     /* Check Point Box */
     .checkpoint {
       background: #f0fdf4;
-      border: 1px dashed #86efac;
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin-top: 14px;
-      font-size: 13px;
+      border: 1.5px dashed #86efac;
+      border-radius: 10px;
+      padding: 15px 18px;
+      margin-top: 16px;
+      font-size: 16px;
       color: #166534;
       display: flex;
       align-items: center;
-      gap: 8px;
-      line-height: 1.5;
+      gap: 10px;
+      line-height: 1.6;
     }
 
     /* Step 4 Option Grid */
     .option-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px;
-      margin-top: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
     }
 
     .option-card {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      padding: 14px;
-      font-size: 13px;
-      line-height: 1.6;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 15.5px;
+      line-height: 1.65;
     }
 
     .option-card strong {
       display: block;
       color: #1e40af;
-      margin-bottom: 4px;
-      font-size: 13.5px;
+      margin-bottom: 6px;
+      font-size: 17px;
     }
 
     .option-code {
       background: #1e293b;
       color: #f1f5f9;
-      padding: 6px 10px;
-      border-radius: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
       display: block;
-      margin-top: 6px;
+      margin-top: 8px;
       font-family: monospace;
-      font-size: 12px;
+      font-size: 15px;
       cursor: pointer;
     }
 
@@ -670,53 +675,53 @@
     .independence-card {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 24px;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 26px;
     }
 
     .independence-card h3 {
-      font-size: 16px;
-      font-weight: 750;
+      font-size: 20.5px;
+      font-weight: 800;
       color: #0f172a;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .formula-box {
       background: #1e293b;
       color: #f8fafc;
-      border-radius: 10px;
-      padding: 16px;
+      border-radius: 12px;
+      padding: 18px;
       font-family: monospace;
-      font-size: 13px;
-      line-height: 1.8;
-      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.85;
+      margin-top: 12px;
     }
 
     /* Emergency FAQ */
     .faq-section {
       background: white;
-      border-radius: 14px;
-      padding: 22px;
+      border-radius: 16px;
+      padding: 24px;
       border: 1px solid var(--border);
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     .faq-section h3 {
-      font-size: 16px;
-      font-weight: 750;
-      margin-bottom: 14px;
+      font-size: 20.5px;
+      font-weight: 800;
+      margin-bottom: 16px;
       color: var(--text-main);
     }
 
     .faq-item {
-      padding: 12px 0;
+      padding: 14px 0;
       border-bottom: 1px solid #f1f5f9;
-      font-size: 13.5px;
-      line-height: 1.6;
+      font-size: 16.5px;
+      line-height: 1.65;
     }
 
     .faq-item:last-child {
@@ -726,7 +731,7 @@
     .faq-q {
       font-weight: 700;
       color: var(--accent);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .faq-a {
@@ -740,10 +745,10 @@
       right: 24px;
       background: #10b981;
       color: white;
-      padding: 12px 24px;
-      border-radius: 10px;
+      padding: 14px 26px;
+      border-radius: 12px;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 16px;
       box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
       transform: translateY(100px);
       opacity: 0;
@@ -758,9 +763,112 @@
 
     footer {
       text-align: center;
-      margin-top: 32px;
-      font-size: 13px;
+      margin-top: 36px;
+      font-size: 15px;
       color: var(--text-muted);
+    }
+
+    /* ========================================== */
+    /* Mobile Responsive Optimizations            */
+    /* ========================================== */
+    @media (max-width: 680px) {
+      body {
+        padding: 12px 10px;
+        font-size: 16px;
+      }
+
+      .container {
+        width: 100%;
+      }
+
+      header {
+        padding: 24px 16px;
+        border-radius: 14px;
+      }
+
+      header h1 {
+        font-size: 23px;
+        line-height: 1.3;
+      }
+
+      header p {
+        font-size: 15px;
+      }
+
+      .main-tabs {
+        flex-direction: column;
+        gap: 8px;
+        padding: 6px;
+        position: static;
+      }
+
+      .tab-btn {
+        width: 100%;
+        font-size: 16.5px;
+        padding: 12px 14px;
+      }
+
+      .env-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .launch-bar {
+        padding: 16px;
+      }
+
+      .launch-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .guide-card {
+        padding: 18px 14px;
+      }
+
+      .guide-card-title {
+        font-size: 18px;
+      }
+
+      .guide-card-desc {
+        font-size: 15px;
+      }
+
+      .step-section {
+        padding: 18px 14px;
+      }
+
+      .step-title {
+        font-size: 18px;
+      }
+
+      .step-desc {
+        font-size: 15px;
+      }
+
+      .prompt-box {
+        padding: 14px 12px;
+      }
+
+      .prompt-content {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .copy-btn {
+        font-size: 16px;
+        padding: 12px 16px;
+      }
+
+      .checkpoint {
+        font-size: 14.5px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
