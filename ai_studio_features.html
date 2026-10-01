@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google AI Studio Build Mode 기능 칩 가이드</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --card-hover: #22263a;
+      --border: #2a2e3d;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --blue: #3b82f6;
+      --blue-glow: rgba(59,130,246,0.15);
+      --green: #22c55e;
+      --green-bg: rgba(34,197,94,0.1);
+      --purple: #a78bfa;
+      --purple-bg: rgba(167,139,250,0.1);
+      --orange: #f59e0b;
+      --orange-bg: rgba(245,158,11,0.1);
+      --red: #f87171;
+      --red-bg: rgba(248,113,113,0.1);
+      --cyan: #22d3ee;
+      --cyan-bg: rgba(34,211,238,0.1);
+      --pink: #f472b6;
+      --pink-bg: rgba(244,114,182,0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 32px 16px;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 48px 24px;
+      margin-bottom: 40px;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(59,130,246,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 50%, rgba(167,139,250,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    header p {
+      font-size: 16px;
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .chip-count {
+      display: inline-block;
+      background: var(--blue-glow);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: #93c5fd;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 16px;
+      position: relative;
+    }
+
+    /* Category Nav */
+    .cat-nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+
+    .cat-nav a {
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .cat-nav a:hover {
+      color: white;
+      border-color: var(--blue);
+      background: var(--blue-glow);
+    }
+
+    /* Category Section */
+    .category {
+      margin-bottom: 40px;
+    }
+
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .cat-header h2 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .cat-header .cat-badge {
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Feature Cards Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 14px;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .feature-card:hover {
+      background: var(--card-hover);
+      border-color: #3b4a6b;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .feature-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .feature-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #252a3a;
+      border: 1px solid #3b4a6b;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .feature-chip .chip-icon {
+      font-size: 16px;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .feature-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Category Color Themes */
+    .cat-google .cat-icon { background: var(--green-bg); }
+    .cat-google .cat-badge { background: var(--green-bg); color: var(--green); }
+    .cat-google .feature-tag { background: var(--green-bg); color: var(--green); }
+
+    .cat-data .cat-icon { background: var(--cyan-bg); }
+    .cat-data .cat-badge { background: var(--cyan-bg); color: var(--cyan); }
+    .cat-data .feature-tag { background: var(--cyan-bg); color: var(--cyan); }
+
+    .cat-media .cat-icon { background: var(--purple-bg); }
+    .cat-media .cat-badge { background: var(--purple-bg); color: var(--purple); }
+    .cat-media .feature-tag { background: var(--purple-bg); color: var(--purple); }
+
+    .cat-ai .cat-icon { background: var(--orange-bg); }
+    .cat-ai .cat-badge { background: var(--orange-bg); color: var(--orange); }
+    .cat-ai .feature-tag { background: var(--orange-bg); color: var(--orange); }
+
+    .cat-special .cat-icon { background: var(--pink-bg); }
+    .cat-special .cat-badge { background: var(--pink-bg); color: var(--pink); }
+    .cat-special .feature-tag { background: var(--pink-bg); color: var(--pink); }
+
+    /* Screenshot Reference */
+    .ref-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .ref-box h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .ref-box p {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: #475569;
+    }
+
+    @media (max-width: 700px) {
+      .features-grid { grid-template-columns: 1fr; }
+      header h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>Google AI Studio — Build Mode 기능 칩 가이드</h1>
+    <p><code>+ New app</code> 프롬프트 입력창 아래에 좌우 스크롤되는 기능 버튼(Chip)들의 전체 목록과 상세 설명</p>
+    <div class="chip-count">총 31개 기능 칩 확인 (2026.10 기준)</div>
+  </header>
+
+  <!-- Category Navigation -->
+  <div class="cat-nav">
+    <a href="#cat-google">📱 Google 서비스 연동</a>
+    <a href="#cat-data">🔍 데이터 & 검색</a>
+    <a href="#cat-media">🎨 미디어 생성/처리</a>
+    <a href="#cat-ai">🛠️ AI 고급 설정</a>
+    <a href="#cat-special">✨ 특수 기능</a>
+  </div>
+
+  <!-- 1. Google 서비스 연동 -->
+  <div class="category cat-google" id="cat-google">
+    <div class="cat-header">
+      <div class="cat-icon">📱</div>
+      <div>
+        <h2>앱 & 플랫폼 연동 (Google 서비스 통합)</h2>
+      </div>
+      <span class="cat-badge">13개</span>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🤖</span> Build an Android app</div>
+        </div>
+        <div class="feature-desc">네이티브 안드로이드 앱을 Kotlin + Android SDK 기반으로 생성합니다. Preview에 에뮬레이터가 뜨며, 한글 입력 제약이 생길 수 있으므로 웹앱 실습 시에는 주의가 필요합니다.</div>
+        <span class="feature-tag">Android / Kotlin</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">📁</span> Google Drive</div>
+        </div>
+        <div class="feature-desc">구글 드라이브와 연동하여 파일 읽기/쓰기/검색 기능을 앱에 통합합니다. 사용자의 드라이브에서 문서를 가져오거나 결과물을 저장할 수 있습니다.</div>
+        <span class="feature-tag">파일 관리</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">📊</span> Google Sheets</div>
+        </div>
+        <div class="feature-desc">구글 스프레드시트를 간이 데이터베이스처럼 활용합니다. 시트에서 데이터를 읽어오거나, 앱에서 입력한 데이터를 시트에 기록할 수 있습니다.</div>
+        <span class="feature-tag">데이터 저장/조회</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">📧</span> Gmail</div>
+        </div>
+        <div class="feature-desc">Gmail API와 연동하여 이메일 발송, 읽기, 검색 등의 기능을 앱에 탑재합니다. 자동 알림 메일이나 보고서 발송 등에 활용 가능합니다.</div>
+        <span class="feature-tag">이메일</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">📅</span> Google Calendar</div>
+        </div>
+        <div class="feature-desc">구글 캘린더와 연동하여 일정 조회/추가/수정 기능을 앱에 넣습니다. 스케줄 관리 앱이나 예약 시스템에 활용할 수 있습니다.</div>
+        <span class="feature-tag">일정 관리</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">📝</span> Google Docs</div>
+        </div>
+        <div class="feature-desc">구글 문서를 읽거나 작성/편집하는 기능을 앱에 연결합니다. 보고서 자동 생성이나 문서 요약 등에 활용 가능합니다.</div>
+        <span class="feature-tag">문서 편집</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">📽️</span> Google Slides</div>
+        </div>
+        <div class="feature-desc">구글 슬라이드(프레젠테이션)를 생성하거나 편집하는 기능을 연동합니다. AI가 내용을 기반으로 발표 자료를 자동 구성할 수 있습니다.</div>
+        <span class="feature-tag">프레젠테이션</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">☑️</span> Google Tasks</div>
+        </div>
+        <div class="feature-desc">구글 Tasks(할 일 관리)와 연동하여 작업 생성/완료/목록 관리 기능을 앱에 넣습니다. To-Do 리스트 연동에 유용합니다.</div>
+        <span class="feature-tag">할 일 관리</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">💬</span> Google Chat</div>
+        </div>
+        <div class="feature-desc">구글 채팅 메시지를 보내거나 읽는 기능을 앱에 연결합니다. 팀 알림이나 자동 메시지 발송 등에 활용할 수 있습니다.</div>
+        <span class="feature-tag">메시징</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">📋</span> Google Forms</div>
+        </div>
+        <div class="feature-desc">구글 설문지(폼)를 생성하거나 응답을 수집하는 기능을 연동합니다. 설문 자동 생성이나 응답 분석에 활용 가능합니다.</div>
+        <span class="feature-tag">설문/양식</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">💡</span> Google Keep</div>
+        </div>
+        <div class="feature-desc">구글 킵(메모앱)과 연동하여 메모 생성/검색/관리 기능을 탑재합니다. 빠른 메모 저장이나 아이디어 정리에 활용할 수 있습니다.</div>
+        <span class="feature-tag">메모</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🎥</span> Google Meet</div>
+        </div>
+        <div class="feature-desc">구글 미트 화상회의 링크 생성이나 회의 관련 기능을 연동합니다. 자동 회의 스케줄링 등에 활용 가능합니다.</div>
+        <span class="feature-tag">화상회의</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">👥</span> Contacts</div>
+        </div>
+        <div class="feature-desc">구글 연락처에서 연락처를 읽거나 관리하는 기능을 앱에 통합합니다. 연락처 검색이나 자동 그룹 분류에 활용할 수 있습니다.</div>
+        <span class="feature-tag">연락처</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2. 데이터 & 검색 -->
+  <div class="category cat-data" id="cat-data">
+    <div class="cat-header">
+      <div class="cat-icon">🔍</div>
+      <div>
+        <h2>데이터 & 검색 소스</h2>
+      </div>
+      <span class="cat-badge">3개</span>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🔎</span> Use Google Search data</div>
+        </div>
+        <div class="feature-desc">앱이 구글 검색(Grounding with Google Search)을 활용하여 실시간 웹 정보를 가져와 답변에 반영합니다. 최신 뉴스, 날씨, 가격 정보 등을 앱에서 직접 보여줄 수 있습니다.</div>
+        <span class="feature-tag">실시간 검색</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">📍</span> Use Google Maps data</div>
+        </div>
+        <div class="feature-desc">구글 맵스 데이터를 연동하여 지도 표시, 장소 검색, 경로 안내, 주변 맛집/시설 정보 등의 기능을 앱에 넣습니다.</div>
+        <span class="feature-tag">지도/위치</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🔥</span> Add database and auth</div>
+        </div>
+        <div class="feature-desc">Firebase 등의 클라우드 데이터베이스와 사용자 인증(로그인/회원가입) 기능을 앱에 추가합니다. 여러 사용자가 데이터를 공유하는 앱을 만들 수 있습니다.</div>
+        <span class="feature-tag">DB / 인증</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. 미디어 생성 & 처리 -->
+  <div class="category cat-media" id="cat-media">
+    <div class="cat-header">
+      <div class="cat-icon">🎨</div>
+      <div>
+        <h2>미디어 생성 & 처리 (멀티모달)</h2>
+      </div>
+      <span class="cat-badge">6개</span>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🔊</span> Convert text to speech</div>
+        </div>
+        <div class="feature-desc">텍스트를 자연스러운 음성(TTS)으로 변환하는 기능을 앱에 추가합니다. 읽어주기 기능이나 오디오 콘텐츠 생성에 활용할 수 있습니다.</div>
+        <span class="feature-tag">TTS / 음성 합성</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🎵</span> Generate music</div>
+        </div>
+        <div class="feature-desc">AI를 활용하여 음악을 생성하는 기능을 앱에 탑재합니다. 배경 음악, 효과음, 멜로디 등을 텍스트 설명만으로 만들 수 있습니다.</div>
+        <span class="feature-tag">AI 음악 생성</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🖼️</span> Create & edit images</div>
+        </div>
+        <div class="feature-desc">Imagen 등을 활용하여 이미지를 생성하거나 기존 이미지를 편집하는 기능을 앱에 넣습니다. 썸네일, 배너, 일러스트 제작에 유용합니다.</div>
+        <span class="feature-tag">이미지 생성/편집</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🖼️</span> Generate high-quality images</div>
+        </div>
+        <div class="feature-desc">더 높은 품질과 해상도의 이미지를 생성하는 고급 모드(Imagen 3 등)를 연동합니다. 인쇄용이나 전문 디자인 용도에 적합합니다.</div>
+        <span class="feature-tag">고품질 이미지</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🎞️</span> Animate images into video</div>
+        </div>
+        <div class="feature-desc">정적 이미지를 입력하면 AI가 이를 움직이는 동영상으로 변환(애니메이션화)합니다. 사진에 생동감을 불어넣을 수 있습니다.</div>
+        <span class="feature-tag">이미지 → 영상</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🎬</span> Generate video from text</div>
+        </div>
+        <div class="feature-desc">텍스트 설명만으로 AI가 비디오 영상을 생성합니다 (Veo 모델 등). 짧은 클립, 프로모션 영상 등을 자동으로 만들 수 있습니다.</div>
+        <span class="feature-tag">텍스트 → 영상</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. AI 고급 설정 -->
+  <div class="category cat-ai" id="cat-ai">
+    <div class="cat-header">
+      <div class="cat-icon">🛠️</div>
+      <div>
+        <h2>AI 고급 설정 & 분석</h2>
+      </div>
+      <span class="cat-badge">8개</span>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🎙️</span> Add voice conversations</div>
+        </div>
+        <div class="feature-desc">앱에 음성 대화(Voice Chat) 기능을 추가합니다. 사용자가 마이크로 말하면 AI가 음성으로 응답하는 양방향 대화가 가능합니다.</div>
+        <span class="feature-tag">음성 대화</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">✨</span> Add Gemini intelligence</div>
+        </div>
+        <div class="feature-desc">앱 내에 Gemini 모델의 AI 추론/대화 기능을 직접 내장합니다. 텍스트 요약, 질문 응답, 데이터 분석 등 지능형 기능을 추가할 수 있습니다.</div>
+        <span class="feature-tag">AI 추론 내장</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">💬</span> Add a Gemini chatbot</div>
+        </div>
+        <div class="feature-desc">앱에 Gemini 기반 대화형 챗봇 인터페이스를 바로 탑재합니다. 고객 상담, FAQ 자동 응답 등에 즉시 활용 가능합니다.</div>
+        <span class="feature-tag">챗봇</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">📐</span> Control image aspect ratios</div>
+        </div>
+        <div class="feature-desc">이미지 생성 시 가로/세로 비율(1:1, 4:3, 16:9, 9:16 등)을 세밀하게 제어하는 설정을 추가합니다. SNS별 최적 사이즈에 맞출 수 있습니다.</div>
+        <span class="feature-tag">이미지 비율</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🔍</span> Analyze images</div>
+        </div>
+        <div class="feature-desc">업로드한 이미지를 AI가 분석합니다. 내용 인식(사물/인물), OCR(글자 추출), 장면 설명 등의 기능을 앱에 넣을 수 있습니다.</div>
+        <span class="feature-tag">이미지 분석</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">⚡</span> Add low-latency responses</div>
+        </div>
+        <div class="feature-desc">응답 지연을 줄이는 저지연 모드(Flash 모델 등)를 적용합니다. 실시간 대화나 빠른 반응이 필요한 앱에서 체감 속도를 크게 향상시킵니다.</div>
+        <span class="feature-tag">저지연 / 고속</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🎥</span> Analyze video content</div>
+        </div>
+        <div class="feature-desc">업로드한 동영상의 내용을 AI가 분석합니다. 장면 인식, 핵심 요약, 자막 생성, 특정 장면 검색 등의 기능을 앱에 추가할 수 있습니다.</div>
+        <span class="feature-tag">영상 분석</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">📝</span> Transcribe audio</div>
+        </div>
+        <div class="feature-desc">오디오 파일이나 음성을 텍스트로 변환(STT/음성 인식)하는 기능을 앱에 넣습니다. 회의 녹음 전사, 인터뷰 기록 등에 활용 가능합니다.</div>
+        <span class="feature-tag">STT / 음성 인식</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 5. 특수 기능 -->
+  <div class="category cat-special" id="cat-special">
+    <div class="cat-header">
+      <div class="cat-icon">✨</div>
+      <div>
+        <h2>특수 기능</h2>
+      </div>
+      <span class="cat-badge">2개</span>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip"><span class="chip-icon">🧠</span> Enable high thinking</div>
+        </div>
+        <div class="feature-desc">Gemini 모델의 'Deep Thinking(심층 추론)' 모드를 활성화합니다. 복잡한 논리적 문제, 수학, 코딩 등 깊은 사고가 필요한 작업에서 더 정확한 결과를 도출합니다.</div>
+        <span class="feature-tag">심층 추론</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-name">
+          <div class="feature-chip" style="background: linear-gradient(135deg, #312e81, #4338ca); border-color: #6366f1;">
+            <span class="chip-icon">✨</span> I'm feeling lucky
+          </div>
+        </div>
+        <div class="feature-desc">프롬프트 입력창 우측의 특별 버튼입니다. 클릭하면 AI가 랜덤으로 재미있는 앱 아이디어를 자동 제안하고 즉시 빌드를 시작합니다. 영감이 필요할 때 사용해보세요!</div>
+        <span class="feature-tag">랜덤 아이디어</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Reference Box -->
+  <div class="ref-box">
+    <h3>📌 참고</h3>
+    <p>위 기능 칩들은 Google AI Studio의 <code>+ New app</code> 화면에서 프롬프트 입력창 아래에<br>
+    <strong>좌우 스크롤 가능한 캐러셀(Carousel)</strong> 형태로 배치되어 있으며,<br>
+    클릭하면 해당 기능이 프롬프트에 자동으로 추가되거나 관련 설정이 활성화됩니다.</p>
+  </div>
+
+  <footer>
+    <p>Google AI Studio Build Mode Feature Chips Reference · 2026.10 기준</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

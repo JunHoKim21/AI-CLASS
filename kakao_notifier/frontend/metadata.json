@@ -1,0 +1,7 @@
+{
+  "name": "순원 말씀 알림이 - 카카오톡 1:1 개별 전송",
+  "description": "교회 순모임, 구역 공지 및 맞춤 성경 구절을 순원들에게 1:1로 정성스럽게 개별 전송하는 스마트 발송기",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
