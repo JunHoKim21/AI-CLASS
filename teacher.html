@@ -601,7 +601,7 @@
     <a href="#section-prerequisites" class="toc-link">2. 사전 준비 & OS</a>
     <a href="#section-timetable" class="toc-link">3. 150분 타임테이블</a>
     <a href="#section-ui-guide" class="toc-link">4. 화면 설명(Must vs Skip)</a>
-    <a href="#section-prompts" class="toc-link">5. 실습 프롬프트 (Step 1~4)</a>
+    <a href="#section-prompts" class="toc-link">5. 실습 프롬프트 (Step 1~4 + 보너스)</a>
     <a href="#section-share" class="toc-link">6. 스마트폰 링크 공유 (Share)</a>
     <a href="#section-independence" class="toc-link">7. 자립 공식 & 단어 치환</a>
     <a href="#section-tips" class="toc-link">8. 대기시간 & 트러블슈팅</a>
@@ -713,8 +713,8 @@
           </tr>
           <tr>
             <td>53~69분 (16m)</td>
-            <td><strong>[Step 2] 브라우저 저장 연동</strong><br><small style="color:#7e22ce;">(선택: Step 2-1 기기간 이사 링크)</small></td>
-            <td>로컬 저장소 연동 ➜ F5(Mac: Cmd+R) 눌러도 데이터 살아있음 확인 (개인 서랍장)<br><span style="font-size:12px; color:#6b21a8;">*여유 순장은 1초 이사 링크(Step 2-1) 체험 지도</span></td>
+            <td><strong>[Step 2] 브라우저 저장 연동</strong></td>
+            <td>로컬 저장소 연동 ➜ F5(Mac: Cmd+R) 눌러도 데이터 살아있음 확인 (개인 서랍장)</td>
             <td><span class="badge-core">필수 2</span></td>
           </tr>
           <tr>
@@ -733,7 +733,7 @@
           <tr>
             <td>100~115분 (15m)</td>
             <td><strong>★ 구조적 버퍼 (1:1 복구)</strong></td>
-            <td>뒤처진 수강생 프롬프트 복구, 질문 해결, 최종 미완성자에게 완성 링크 배포</td>
+            <td>뒤처진 수강생 프롬프트 복구, 질문 해결, 최종 미완성자 완성 링크 배포<br><span style="font-size:12px; color:#6b21a8;">*일찍 마친 순장: [Step 5 보너스] 스마트폰 1초 이사 링크 도전 안내</span></td>
             <td><span class="badge-buffer">안전망</span></td>
           </tr>
           <tr>
@@ -802,7 +802,7 @@
 
   <!-- 5. 실습 프롬프트 템플릿 -->
   <section id="section-prompts">
-    <h2>💻 5. 실습용 프롬프트 템플릿 (Step 1 ~ Step 4)</h2>
+    <h2>💻 5. 실습용 프롬프트 템플릿 (Step 1 ~ Step 4 + 보너스 Step 5)</h2>
     <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
       수강생 교안(`student.html`)과 100% 동일한 순서로 구성되어 있습니다.
     </p>
@@ -878,35 +878,6 @@
       </div>
     </div>
 
-    <!-- Step 2-1 (선택/보너스) -->
-    <div class="prompt-card" style="border: 1px dashed #a855f7; background: #faf5ff;">
-      <div class="prompt-header">
-        <span class="prompt-title" style="color: #7e22ce;"><span>Step 2-1 (선택/보너스)</span> 스마트폰 ↔ PC 1초 데이터 전송 링크</span>
-        <button class="copy-btn" onclick="copyPrompt('p2-1', this)">📋 복사하기</button>
-      </div>
-      <div class="prompt-body" id="p2-1">현재 프로젝트의 기존 순원 목록 관리, 출석 체크, 기도제목 입력, 브라우저 로컬 자동 저장(localStorage) 기능을 100% 보존해줘.
-이번 단계에서는 [기기간 데이터 전송 및 백업 링크 복사 기능]을 추가해줘.
-
-1. 화면 상단(헤더 아래 또는 컨트롤 영역)에 눈에 띄는 [📱 기기간 데이터 전송 링크 복사] 버튼을 만들어줘.
-2. 이 버튼을 클릭하면:
-   - 현재 브라우저에 저장된 모든 순원 데이터(이름, 출석여부, 기도제목)를 JSON 문자열로 만든 뒤 URL 인코딩하여, 현재 웹앱 주소 뒤에 '#data=' 형태로 붙인 전체 URL 링크를 생성해줘. (예: https://...#data=인코딩된데이터)
-   - 이 전체 링크를 클립보드에 자동 복사하고, "데이터 전송 링크가 복사되었습니다! 카톡(나와의 채팅방)으로 보낸 뒤 다른 기기에서 열어보세요."라는 토스트 알림을 띄워줘.
-3. 앱이 브라우저에서 처음 열릴 때(페이지 로딩 시):
-   - URL 주소에 '#data=' 파라미터가 포함되어 있는지 확인해줘.
-   - '#data=' 파라미터가 있다면, 그 안의 데이터를 디코딩/파싱하여 브라우저 로컬 저장소(localStorage)에 자동으로 덮어쓰기 저장하고 화면에 즉시 표시해줘.
-   - 복원이 완료된 후에는 깔끔하게 URL 주소의 '#data=...' 뒷부분을 history.replaceState를 사용해 지워줘.
-4. 기존의 순원 추가/삭제 및 로컬 저장 기능은 절대 깨지지 않게 해줘.</div>
-    </div>
-
-    <div class="tip-box" style="border-left-color: #a855f7; background: #faf5ff; color: #581c87;">
-      <strong>💡 강사 티칭 팁 (선택 보너스 운영 요령):</strong><br>
-      <em>"이 단계는 공식 필수가 아닌 선택 미션입니다! 시간 여유가 있거나 폰으로 미리 데이터를 옮겨두고 싶은 순장님만 가볍게 복사해 넣으시고, 뒤처진 순장님은 건너뛰고 바로 Step 3 수료선으로 직행하게 지도하세요."</em>
-    </div>
-
-    <div class="checkpoint-box" style="background: #f3e8ff; border-color: #c084fc; color: #6b21a8;">
-      ✅ <strong>확인 미션:</strong> <code>[기기간 데이터 전송 링크 복사]</code>를 누르고, 카카오톡 '나와의 채팅방'에 보낸 뒤 스마트폰(또는 시크릿 창)에서 링크를 열었을 때 PC의 입력 데이터가 그대로 복원되어 뜨나요?
-    </div>
-
     <!-- Step 3 (★ 공식 수료선) -->
     <div class="prompt-card" style="border: 2px solid #f59e0b;">
       <div class="prompt-header">
@@ -961,6 +932,35 @@
       <div class="placeholder-guide">
         &lt;!-- &lt;img src="images/05_step4_styled_app.png" alt="Step 4 Styled App" style="max-width:100%; border-radius:8px;"&gt; --&gt;
       </div>
+    </div>
+
+    <!-- Step 5 (보너스 실습) -->
+    <div class="prompt-card" style="border: 2px dashed #8b5cf6; background: #faf5ff;">
+      <div class="prompt-header">
+        <span class="prompt-title" style="color: #7e22ce;"><span>Step 5 (보너스 실습)</span> 스마트폰 ↔ PC 1초 데이터 전송 링크</span>
+        <button class="copy-btn" onclick="copyPrompt('p5', this)">📋 복사하기</button>
+      </div>
+      <div class="prompt-body" id="p5">현재 프로젝트의 기존 순원 목록 관리, 출석 체크, 기도제목 입력, 브라우저 로컬 자동 저장(localStorage) 기능을 100% 보존해줘.
+이번 단계에서는 [기기간 데이터 전송 및 백업 링크 복사 기능]을 추가해줘.
+
+1. 화면 상단(헤더 아래 또는 컨트롤 영역)에 눈에 띄는 [📱 기기간 데이터 전송 링크 복사] 버튼을 만들어줘.
+2. 이 버튼을 클릭하면:
+   - 현재 브라우저에 저장된 모든 순원 데이터(이름, 출석여부, 기도제목)를 JSON 문자열로 만든 뒤 URL 인코딩하여, 현재 웹앱 주소 뒤에 '#data=' 형태로 붙인 전체 URL 링크를 생성해줘. (예: https://...#data=인코딩된데이터)
+   - 이 전체 링크를 클립보드에 자동 복사하고, "데이터 전송 링크가 복사되었습니다! 카톡(나와의 채팅방)으로 보낸 뒤 다른 기기에서 열어보세요."라는 토스트 알림을 띄워줘.
+3. 앱이 브라우저에서 처음 열릴 때(페이지 로딩 시):
+   - URL 주소에 '#data=' 파라미터가 포함되어 있는지 확인해줘.
+   - '#data=' 파라미터가 있다면, 그 안의 데이터를 디코딩/파싱하여 브라우저 로컬 저장소(localStorage)에 자동으로 덮어쓰기 저장하고 화면에 즉시 표시해줘.
+   - 복원이 완료된 후에는 깔끔하게 URL 주소의 '#data=...' 뒷부분을 history.replaceState를 사용해 지워줘.
+4. 기존의 순원 추가/삭제 및 로컬 저장 기능은 절대 깨지지 않게 해줘.</div>
+    </div>
+
+    <div class="tip-box" style="border-left-color: #8b5cf6; background: #faf5ff; color: #581c87;">
+      <strong>💡 강사 티칭 팁 (Step 5 보너스 운영 요령):</strong><br>
+      <em>"Step 1~4까지 완료한 뒤 시간이 남는 순장님들이나, 실제로 스마트폰에서 이번 주 순모임에 쓸 데이터를 미리 옮겨두고 싶은 분들에게 선물처럼 권하는 보너스 트랙입니다. 뒤처진 순장님에게는 권하지 마시고 Step 3 공식 수료에 집중하도록 지도하세요."</em>
+    </div>
+
+    <div class="checkpoint-box" style="background: #f3e8ff; border-color: #c084fc; color: #6b21a8;">
+      ✅ <strong>확인 미션:</strong> <code>[기기간 데이터 전송 링크 복사]</code>를 누르고, 카카오톡 '나와의 채팅방'에 보낸 뒤 스마트폰(또는 시크릿 창)에서 링크를 열었을 때 PC의 입력 데이터가 그대로 복원되어 뜨나요?
     </div>
   </section>
 
@@ -1121,7 +1121,6 @@
       <div class="script-body">
         (Step 1 진행) "교안에서 Step 1 프롬프트 복사를 누르시고, AI Studio 대화창에 붙여넣고 엔터를 치세요! 지금 AI가 화면을 조립하고 있으니 새로고침 누르지 마시고 잠시 기다립니다. 자, 오른쪽에 스마트폰 켜졌죠? 은지와 수진이 이름 확인하시고 체크박스 눌러보세요!"<br><br>
         (Step 2 진행) "지금은 창 닫으면 날아가니까 브라우저 안에 '개인 서랍장'을 달아주겠습니다. Step 2 복사해서 넣으세요! 완성되면 은지 기도제목에 글씨 쓰고, 키보드 F5(Mac: Cmd+R)를 누르세요! 살아있습니까? 이제 심방 가서 폰 꺼져도 데이터 안 날아갑니다!"<br><br>
-        (보너스 안내) "혹시 지금 컴퓨터에 쓴 순원 데이터를 스마트폰으로 바로 보내보고 싶으신 순장님은 Step 2 바로 아래의 <strong>Step 2-1 보너스 프롬프트</strong>를 넣어보세요. 버튼 하나 누르면 카톡으로 1초 이사 링크가 만들어집니다. 시간 부족한 분은 바로 Step 3으로 가셔도 됩니다!"<br><br>
         (Step 3 진행) "오늘의 공식 수료선입니다. Step 3 복사해서 엔터 치세요! 하단에 카톡 박스 생겼죠? [카톡 문구 복사하기] 누르고 본인 카톡 '나와의 채팅방'에 Ctrl+V(Mac: Cmd+V) 붙여넣으세요! 카톡으로 깔끔한 보고서가 도착하신 분, 손 번쩍 드세요! 전원 오늘 공식 수료입니다!"
       </div>
     </div>
@@ -1129,13 +1128,14 @@
     <!-- 대본 4 -->
     <div class="script-block">
       <div class="script-header">
-        <span class="script-action">[3부: 90~115분] 진짜 바이브 코딩 (Step 4 직접 수정) & 버퍼</span>
-        <span>행동: 수강생들이 직접 말로 수정하도록 격려</span>
+        <span class="script-action">[3부: 90~115분] 진짜 바이브 코딩 (Step 4 직접 수정) & 버퍼 (Step 5 보너스)</span>
+        <span>행동: 수강생들이 직접 말로 수정하도록 격려 및 여유 수강생 Step 5 안내</span>
       </div>
       <div class="script-body">
         "순장님들, 지금까지는 제가 드린 프롬프트를 복사하셨죠? 이제 진짜 바이브 코딩을 해보겠습니다. <strong>내 말로 내가 원하는 것 딱 하나만 AI한테 시켜보는 겁니다. (Step 4)</strong><br>
         '출석 체크하면 배경을 초록색으로 바꿔줘'도 좋고, '헤더에 오늘 출석 인원수가 보이게 해줘'도 좋습니다. 완벽한 문장 쓸 필요 없습니다. 친구에게 카톡 하듯이 편하게 지시해 보세요!<br><br>
-        (버퍼 시간 운영) 그리고 혹시 아직 Step 3에 머물러 계신 분들은 전혀 걱정하지 마세요. 제가 1:1로 봐드리고, 필요하시면 강사 완성본 링크를 바로 열어드리겠습니다."
+        (버퍼 및 Step 5 보너스 안내) 혹시 아직 Step 3에 머물러 계신 분들은 전혀 걱정하지 마세요. 제가 1:1로 봐드리겠습니다.<br>
+        그리고 이미 Step 4까지 다 마치고 여유 있으신 순장님들은 교안의 <strong>[Step 5 보너스 실습]</strong>을 한번 넣어보세요! 카톡 링크 한 번으로 내 PC 데이터를 스마트폰으로 1초 만에 그대로 이사시키는 멋진 기능이 추가됩니다!"
       </div>
     </div>
 

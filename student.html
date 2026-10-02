@@ -1171,40 +1171,6 @@
       </div>
     </div>
 
-    <!-- Step 2-1 (선택/보너스): 기기간 데이터 전송/백업 링크 -->
-    <div class="step-section" style="border: 1px dashed #a855f7; background: #faf5ff;">
-      <div class="step-header">
-        <div class="step-title-group">
-          <span class="step-tag tag-bonus">Step 2-1 (선택/보너스)</span>
-          <span class="step-title">스마트폰 ↔ PC 1초 데이터 전송 (기기간 이사)</span>
-        </div>
-        <span style="font-size: 13px; color: #7e22ce; font-weight: 700;">필수 아님 / 필요한 분만 진행</span>
-      </div>
-      <div class="step-desc">
-        서버나 회원가입 없이, <strong>카톡 나에게 보내기 링크 한 번</strong>으로 PC에서 입력한 데이터를 스마트폰(또는 다른 PC)으로 1초 만에 그대로 이사시킵니다. (시간이 부족한 분은 바로 Step 3으로 넘어가셔도 좋습니다.)
-      </div>
-
-      <div class="prompt-box">
-        <div class="prompt-content" id="p2-1">현재 프로젝트의 기존 순원 목록 관리, 출석 체크, 기도제목 입력, 브라우저 로컬 자동 저장(localStorage) 기능을 100% 보존해줘.
-이번 단계에서는 [기기간 데이터 전송 및 백업 링크 복사 기능]을 추가해줘.
-
-1. 화면 상단(헤더 아래 또는 컨트롤 영역)에 눈에 띄는 [📱 기기간 데이터 전송 링크 복사] 버튼을 만들어줘.
-2. 이 버튼을 클릭하면:
-   - 현재 브라우저에 저장된 모든 순원 데이터(이름, 출석여부, 기도제목)를 JSON 문자열로 만든 뒤 URL 인코딩하여, 현재 웹앱 주소 뒤에 '#data=' 형태로 붙인 전체 URL 링크를 생성해줘. (예: https://...#data=인코딩된데이터)
-   - 이 전체 링크를 클립보드에 자동 복사하고, "데이터 전송 링크가 복사되었습니다! 카톡(나와의 채팅방)으로 보낸 뒤 다른 기기에서 열어보세요."라는 토스트 알림을 띄워줘.
-3. 앱이 브라우저에서 처음 열릴 때(페이지 로딩 시):
-   - URL 주소에 '#data=' 파라미터가 포함되어 있는지 확인해줘.
-   - '#data=' 파라미터가 있다면, 그 안의 데이터를 디코딩/파싱하여 브라우저 로컬 저장소(localStorage)에 자동으로 덮어쓰기 저장하고 화면에 즉시 표시해줘.
-   - 복원이 완료된 후에는 깔끔하게 URL 주소의 '#data=...' 뒷부분을 history.replaceState를 사용해 지워줘.
-4. 기존의 순원 추가/삭제 및 로컬 저장 기능은 절대 깨지지 않게 해줘.</div>
-        <button class="copy-btn" onclick="copyPrompt('p2-1', this)">📋 보너스 프롬프트 복사하기</button>
-      </div>
-
-      <div class="checkpoint" style="background: #f3e8ff; border-color: #c084fc; color: #6b21a8;">
-        ✅ <strong>확인 미션:</strong> <code>[기기간 데이터 전송 링크 복사]</code>를 누르고, 카카오톡 '나와의 채팅방'에 보낸 뒤 스마트폰(또는 시크릿 창)에서 링크를 열었을 때 PC의 입력 데이터가 그대로 복원되어 뜨나요?
-      </div>
-    </div>
-
     <!-- Step 3 (Graduation Goal) -->
     <div class="step-section" style="border: 2px solid #f59e0b;">
       <div class="step-header">
@@ -1280,6 +1246,40 @@
 
       <div class="checkpoint" style="margin-top: 16px;">
         ✨ <strong>확인 미션:</strong> 내가 입력한 한 줄 지시에 맞춰 오른쪽 화면이 진짜로 바뀌었나요? 이게 바로 '바이브 코딩'입니다!
+      </div>
+    </div>
+
+    <!-- Step 5 (보너스 실습): 스마트폰 ↔ PC 1초 데이터 전송 링크 -->
+    <div class="step-section" style="border: 2px dashed #8b5cf6; background: #faf5ff;">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-tag tag-bonus">Step 5 (보너스 실습)</span>
+          <span class="step-title">스마트폰 ↔ PC 1초 데이터 전송 (기기간 이사)</span>
+        </div>
+        <span style="font-size: 13px; color: #7e22ce; font-weight: 700;">선택 미션 / 필요한 분만 도전!</span>
+      </div>
+      <div class="step-desc">
+        1~4단계를 모두 마치셨나요? 서버나 회원가입 없이, <strong>카톡 나에게 보내기 링크 한 번</strong>으로 PC에서 입력한 데이터를 스마트폰(또는 다른 PC)으로 1초 만에 그대로 이사시킵니다.
+      </div>
+
+      <div class="prompt-box">
+        <div class="prompt-content" id="p5">현재 프로젝트의 기존 순원 목록 관리, 출석 체크, 기도제목 입력, 브라우저 로컬 자동 저장(localStorage) 기능을 100% 보존해줘.
+이번 단계에서는 [기기간 데이터 전송 및 백업 링크 복사 기능]을 추가해줘.
+
+1. 화면 상단(헤더 아래 또는 컨트롤 영역)에 눈에 띄는 [📱 기기간 데이터 전송 링크 복사] 버튼을 만들어줘.
+2. 이 버튼을 클릭하면:
+   - 현재 브라우저에 저장된 모든 순원 데이터(이름, 출석여부, 기도제목)를 JSON 문자열로 만든 뒤 URL 인코딩하여, 현재 웹앱 주소 뒤에 '#data=' 형태로 붙인 전체 URL 링크를 생성해줘. (예: https://...#data=인코딩된데이터)
+   - 이 전체 링크를 클립보드에 자동 복사하고, "데이터 전송 링크가 복사되었습니다! 카톡(나와의 채팅방)으로 보낸 뒤 다른 기기에서 열어보세요."라는 토스트 알림을 띄워줘.
+3. 앱이 브라우저에서 처음 열릴 때(페이지 로딩 시):
+   - URL 주소에 '#data=' 파라미터가 포함되어 있는지 확인해줘.
+   - '#data=' 파라미터가 있다면, 그 안의 데이터를 디코딩/파싱하여 브라우저 로컬 저장소(localStorage)에 자동으로 덮어쓰기 저장하고 화면에 즉시 표시해줘.
+   - 복원이 완료된 후에는 깔끔하게 URL 주소의 '#data=...' 뒷부분을 history.replaceState를 사용해 지워줘.
+4. 기존의 순원 추가/삭제 및 로컬 저장 기능은 절대 깨지지 않게 해줘.</div>
+        <button class="copy-btn" onclick="copyPrompt('p5', this)">📋 보너스 5단계 프롬프트 복사하기</button>
+      </div>
+
+      <div class="checkpoint" style="background: #f3e8ff; border-color: #c084fc; color: #6b21a8;">
+        ✅ <strong>확인 미션:</strong> <code>[기기간 데이터 전송 링크 복사]</code>를 누르고, 카카오톡 '나와의 채팅방'에 보낸 뒤 스마트폰(또는 시크릿 창)에서 링크를 열었을 때 PC의 입력 데이터가 그대로 복원되어 뜨나요?
       </div>
     </div>
 
