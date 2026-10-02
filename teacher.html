@@ -601,7 +601,7 @@
     <a href="#section-prerequisites" class="toc-link">2. 사전 준비 & OS</a>
     <a href="#section-timetable" class="toc-link">3. 150분 타임테이블</a>
     <a href="#section-ui-guide" class="toc-link">4. 화면 설명(Must vs Skip)</a>
-    <a href="#section-prompts" class="toc-link">5. 실습 프롬프트 (Step 1~5)</a>
+    <a href="#section-prompts" class="toc-link">5. 실습 프롬프트 (Step 1~4)</a>
     <a href="#section-share" class="toc-link">6. 스마트폰 링크 공유 (Share)</a>
     <a href="#section-independence" class="toc-link">7. 자립 공식 & 단어 치환</a>
     <a href="#section-tips" class="toc-link">8. 대기시간 & 트러블슈팅</a>
@@ -705,34 +705,28 @@
             <td>환경</td>
           </tr>
           <tr>
-            <td rowspan="4"><strong>2부<br>메인 실습<br>(55분)</strong></td>
-            <td>35~50분 (15m)</td>
+            <td rowspan="3"><strong>2부<br>메인 실습<br>(55분)</strong></td>
+            <td>35~53분 (18m)</td>
             <td><strong>[Step 1] 기본 뼈대 앱 빌드</strong></td>
             <td>모바일 웹앱 생성 ➜ 우측 Preview에서 '은지, 수진' 가상 순원 확인 및 버튼 조작</td>
             <td><span class="badge-core">필수 1</span></td>
           </tr>
           <tr>
-            <td>50~62분 (12m)</td>
-            <td><strong>[Step 2] 브라우저 저장 연동</strong></td>
-            <td>로컬 저장소 연동 ➜ F5(Mac: Cmd+R) 눌러도 데이터 살아있음 확인 (개인 서랍장)</td>
+            <td>53~69분 (16m)</td>
+            <td><strong>[Step 2] 브라우저 저장 연동</strong><br><small style="color:#7e22ce;">(선택: Step 2-1 기기간 이사 링크)</small></td>
+            <td>로컬 저장소 연동 ➜ F5(Mac: Cmd+R) 눌러도 데이터 살아있음 확인 (개인 서랍장)<br><span style="font-size:12px; color:#6b21a8;">*여유 순장은 1초 이사 링크(Step 2-1) 체험 지도</span></td>
             <td><span class="badge-core">필수 2</span></td>
           </tr>
           <tr>
-            <td>62~75분 (13m)</td>
-            <td><strong>[Step 3] 기기간 1초 데이터 전송 링크</strong></td>
-            <td>스마트폰 ↔ PC 1초 데이터 이사 링크 복사 ➜ 카톡 나와의 채팅방 전송 후 폰에서 열기</td>
-            <td><span class="badge-core">필수 3</span></td>
-          </tr>
-          <tr>
-            <td>75~90분 (15m)</td>
-            <td><strong>[Step 4] 카톡 문구 생성/복사</strong></td>
+            <td>69~90분 (21m)</td>
+            <td><strong>[Step 3] 카톡 문구 생성/복사</strong></td>
             <td><strong>[★ 공식 수료선]</strong> 카톡 문구 상자 상시 노출 + 자동 복사 ➜ 나와의 채팅방 전송</td>
             <td><span class="badge-core">수료선</span></td>
           </tr>
           <tr>
             <td rowspan="2"><strong>3부<br>바이브코딩 & 버퍼<br>(25분)</strong></td>
             <td>90~100분 (10m)</td>
-            <td><strong>[Step 5] 진짜 바이브 코딩 실전</strong></td>
+            <td><strong>[Step 4] 진짜 바이브 코딩 실전</strong></td>
             <td>내 말로 원하는 기능 1개 직접 지시 (출석 색상 변경 / 인원 카운트 / 감성 테마)</td>
             <td><span class="badge-vibe">바이브코딩</span></td>
           </tr>
@@ -808,7 +802,7 @@
 
   <!-- 5. 실습 프롬프트 템플릿 -->
   <section id="section-prompts">
-    <h2>💻 5. 실습용 프롬프트 템플릿 (Step 1 ~ Step 5)</h2>
+    <h2>💻 5. 실습용 프롬프트 템플릿 (Step 1 ~ Step 4)</h2>
     <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
       수강생 교안(`student.html`)과 100% 동일한 순서로 구성되어 있습니다.
     </p>
@@ -816,7 +810,7 @@
     <!-- Step 1 -->
     <div class="prompt-card">
       <div class="prompt-header">
-        <span class="prompt-title"><span>Step 1 (필수)</span> 기본 뼈대 앱 빌드 (15분)</span>
+        <span class="prompt-title"><span>Step 1 (필수)</span> 기본 뼈대 앱 빌드 (18분)</span>
         <button class="copy-btn" onclick="copyPrompt('p1', this)">📋 복사하기</button>
       </div>
       <div class="prompt-body" id="p1">모바일 브라우저와 PC에서 바로 편리하게 사용할 수 있는 '순모임 스마트 케어노트' 웹앱(Web app)을 만들어줘.
@@ -852,7 +846,7 @@
     <!-- Step 2 -->
     <div class="prompt-card">
       <div class="prompt-header">
-        <span class="prompt-title"><span>Step 2 (필수)</span> 새로고침해도 유지되는 브라우저 저장 연동 (12분)</span>
+        <span class="prompt-title"><span>Step 2 (필수)</span> 새로고침해도 유지되는 브라우저 저장 연동 (16분)</span>
         <button class="copy-btn" onclick="copyPrompt('p2', this)">📋 복사하기</button>
       </div>
       <div class="prompt-body" id="p2">현재 프로젝트의 기존 순원 목록, 순원 추가/삭제, 출석 체크박스, 기도제목 입력 UI와 기능을 100% 그대로 유지해줘.
@@ -884,13 +878,13 @@
       </div>
     </div>
 
-    <!-- Step 3 -->
-    <div class="prompt-card">
+    <!-- Step 2-1 (선택/보너스) -->
+    <div class="prompt-card" style="border: 1px dashed #a855f7; background: #faf5ff;">
       <div class="prompt-header">
-        <span class="prompt-title"><span>Step 3 (핵심 연동)</span> 스마트폰 ↔ PC 1초 데이터 전송 (13분)</span>
-        <button class="copy-btn" onclick="copyPrompt('p3', this)">📋 복사하기</button>
+        <span class="prompt-title" style="color: #7e22ce;"><span>Step 2-1 (선택/보너스)</span> 스마트폰 ↔ PC 1초 데이터 전송 링크</span>
+        <button class="copy-btn" onclick="copyPrompt('p2-1', this)">📋 복사하기</button>
       </div>
-      <div class="prompt-body" id="p3">현재 프로젝트의 기존 순원 목록 관리, 출석 체크, 기도제목 입력, 브라우저 로컬 자동 저장(localStorage) 기능을 100% 보존해줘.
+      <div class="prompt-body" id="p2-1">현재 프로젝트의 기존 순원 목록 관리, 출석 체크, 기도제목 입력, 브라우저 로컬 자동 저장(localStorage) 기능을 100% 보존해줘.
 이번 단계에서는 [기기간 데이터 전송 및 백업 링크 복사 기능]을 추가해줘.
 
 1. 화면 상단(헤더 아래 또는 컨트롤 영역)에 눈에 띄는 [📱 기기간 데이터 전송 링크 복사] 버튼을 만들어줘.
@@ -904,22 +898,22 @@
 4. 기존의 순원 추가/삭제 및 로컬 저장 기능은 절대 깨지지 않게 해줘.</div>
     </div>
 
-    <div class="tip-box">
-      <strong>💡 강사 티칭 팁 (기기간 이사 링크 설명):</strong><br>
-      <em>"서버나 회원가입이 없어도, 카톡 링크 한 번으로 내 컴퓨터 안의 서랍장 내용 전체를 스마트폰 서랍장으로 통째로 옮겨 담는 마법입니다. 반대로 스마트폰에서 수정한 내용도 똑같이 링크를 복사해서 PC 카톡으로 열면 PC에도 최신 데이터가 반영됩니다!"</em>라고 원리를 직관적으로 비유해 줍니다.
+    <div class="tip-box" style="border-left-color: #a855f7; background: #faf5ff; color: #581c87;">
+      <strong>💡 강사 티칭 팁 (선택 보너스 운영 요령):</strong><br>
+      <em>"이 단계는 공식 필수가 아닌 선택 미션입니다! 시간 여유가 있거나 폰으로 미리 데이터를 옮겨두고 싶은 순장님만 가볍게 복사해 넣으시고, 뒤처진 순장님은 건너뛰고 바로 Step 3 수료선으로 직행하게 지도하세요."</em>
     </div>
 
-    <div class="checkpoint-box">
+    <div class="checkpoint-box" style="background: #f3e8ff; border-color: #c084fc; color: #6b21a8;">
       ✅ <strong>확인 미션:</strong> <code>[기기간 데이터 전송 링크 복사]</code>를 누르고, 카카오톡 '나와의 채팅방'에 보낸 뒤 스마트폰(또는 시크릿 창)에서 링크를 열었을 때 PC의 입력 데이터가 그대로 복원되어 뜨나요?
     </div>
 
-    <!-- Step 4 -->
+    <!-- Step 3 (★ 공식 수료선) -->
     <div class="prompt-card" style="border: 2px solid #f59e0b;">
       <div class="prompt-header">
-        <span class="prompt-title" style="color: #fbbf24;"><span>Step 4 (★ 공식 수료선)</span> 카톡용 문구 자동 생성 + 복사 (15분)</span>
-        <button class="copy-btn" onclick="copyPrompt('p4', this)">📋 복사하기</button>
+        <span class="prompt-title" style="color: #fbbf24;"><span>Step 3 (★ 공식 수료선)</span> 카톡용 문구 자동 생성 + 복사 (21분)</span>
+        <button class="copy-btn" onclick="copyPrompt('p3', this)">📋 복사하기</button>
       </div>
-      <div class="prompt-body" id="p4">현재 프로젝트의 모든 순원 데이터 관리, UI 레이아웃, 브라우저 로컬 자동 저장 로직을 100% 보존해줘.
+      <div class="prompt-body" id="p3">현재 프로젝트의 모든 순원 데이터 관리, UI 레이아웃, 브라우저 로컬 자동 저장 로직을 100% 보존해줘.
 이번 단계에서는 화면 하단에 [카카오톡용 문구 자동 생성 및 복사 기능]만 추가해줘.
 
 1. 화면 하단에 '카카오톡 공유 미리보기' 영역을 만들고, 그 안에 읽기 전용 텍스트 상자(readonly textarea)를 항상 눈에 보이게 배치해줘.
@@ -936,17 +930,17 @@
     <!-- [스크린샷 4 자리] -->
     <div class="screenshot-placeholder">
       <div class="placeholder-tag">📷 스크린샷 첨부 위치 #4</div>
-      <div class="placeholder-title">Step 4 카톡 복사 결과 (카톡 나와의 채팅방 전송 화면)</div>
+      <div class="placeholder-title">Step 3 카톡 복사 결과 (카톡 나와의 채팅방 전송 화면)</div>
       <div class="placeholder-desc">하단 텍스트 상자에서 복사 버튼을 누른 후, 실제 카카오톡 대화방에 정돈된 이모지와 함께 붙여넣어진 화면을 캡처하여 넣으세요.</div>
       <div class="placeholder-guide">
-        &lt;!-- &lt;img src="images/04_step4_kakao_result.png" alt="Step 4 Kakao Result" style="max-width:100%; border-radius:8px;"&gt; --&gt;
+        &lt;!-- &lt;img src="images/04_step3_kakao_result.png" alt="Step 3 Kakao Result" style="max-width:100%; border-radius:8px;"&gt; --&gt;
       </div>
     </div>
 
-    <!-- Step 5 -->
+    <!-- Step 4 -->
     <div class="prompt-card" style="border: 2px solid #3b82f6;">
       <div class="prompt-header">
-        <span class="prompt-title" style="color: #60a5fa;"><span>Step 5 (바이브 코딩 실전)</span> 내 말로 원하는 기능 1개 직접 고치기 (10분)</span>
+        <span class="prompt-title" style="color: #60a5fa;"><span>Step 4 (바이브 코딩 실전)</span> 내 말로 원하는 기능 1개 직접 고치기 (10분)</span>
       </div>
       <div style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">
         수강생들이 정해진 긴 프롬프트 복붙에서 벗어나, <strong>자신이 원하는 것 딱 하나만 한국어로 직접 입력하게 하는 '진짜 바이브 코딩' 시간</strong>입니다.<br>
@@ -962,10 +956,10 @@
     <!-- [스크린샷 5 자리] -->
     <div class="screenshot-placeholder">
       <div class="placeholder-tag">📷 스크린샷 첨부 위치 #5</div>
-      <div class="placeholder-title">Step 5 직접 수정 완성 화면 (바이브 코딩 결과)</div>
+      <div class="placeholder-title">Step 4 직접 수정 완성 화면 (바이브 코딩 결과)</div>
       <div class="placeholder-desc">출석 시 초록색 하이라이트가 켜지거나, 상단 인원 카운트가 추가된 실제 동작 화면을 캡처하여 배치하세요.</div>
       <div class="placeholder-guide">
-        &lt;!-- &lt;img src="images/05_step5_styled_app.png" alt="Step 5 Styled App" style="max-width:100%; border-radius:8px;"&gt; --&gt;
+        &lt;!-- &lt;img src="images/05_step4_styled_app.png" alt="Step 4 Styled App" style="max-width:100%; border-radius:8px;"&gt; --&gt;
       </div>
     </div>
   </section>
@@ -1121,27 +1115,27 @@
     <!-- 대본 3 -->
     <div class="script-block">
       <div class="script-header">
-        <span class="script-action">[2부: 35~90분] Step 1~4 메인 실습 & 공식 수료</span>
+        <span class="script-action">[2부: 35~90분] Step 1~3 메인 실습 & 공식 수료</span>
         <span>행동: 순회하며 Mac 단축키 및 새로고침 대기 지도</span>
       </div>
       <div class="script-body">
         (Step 1 진행) "교안에서 Step 1 프롬프트 복사를 누르시고, AI Studio 대화창에 붙여넣고 엔터를 치세요! 지금 AI가 화면을 조립하고 있으니 새로고침 누르지 마시고 잠시 기다립니다. 자, 오른쪽에 스마트폰 켜졌죠? 은지와 수진이 이름 확인하시고 체크박스 눌러보세요!"<br><br>
         (Step 2 진행) "지금은 창 닫으면 날아가니까 브라우저 안에 '개인 서랍장'을 달아주겠습니다. Step 2 복사해서 넣으세요! 완성되면 은지 기도제목에 글씨 쓰고, 키보드 F5(Mac: Cmd+R)를 누르세요! 살아있습니까? 이제 심방 가서 폰 꺼져도 데이터 안 날아갑니다!"<br><br>
-        (Step 3 진행) "그런데 컴퓨터에만 저장되면 내 스마트폰에서는 안 보이잖아요? 그래서 '1초 기기간 이사 링크'를 만듭니다! Step 3 복사해서 넣으세요! 완성되면 [기기간 데이터 전송 링크 복사]를 누르고 본인 카톡 나와의 채팅방으로 보내보세요. 폰에서 링크를 누르면 PC에서 쓴 데이터가 폰 서랍장으로 1초 만에 그대로 이사합니다!"<br><br>
-        (Step 4 진행) "오늘의 공식 수료선입니다. Step 4 복사해서 엔터 치세요! 하단에 카톡 박스 생겼죠? [카톡 문구 복사하기] 누르고 본인 카톡 '나와의 채팅방'에 Ctrl+V(Mac: Cmd+V) 붙여넣으세요! 카톡으로 깔끔한 보고서가 도착하신 분, 손 번쩍 드세요! 전원 오늘 공식 수료입니다!"
+        (보너스 안내) "혹시 지금 컴퓨터에 쓴 순원 데이터를 스마트폰으로 바로 보내보고 싶으신 순장님은 Step 2 바로 아래의 <strong>Step 2-1 보너스 프롬프트</strong>를 넣어보세요. 버튼 하나 누르면 카톡으로 1초 이사 링크가 만들어집니다. 시간 부족한 분은 바로 Step 3으로 가셔도 됩니다!"<br><br>
+        (Step 3 진행) "오늘의 공식 수료선입니다. Step 3 복사해서 엔터 치세요! 하단에 카톡 박스 생겼죠? [카톡 문구 복사하기] 누르고 본인 카톡 '나와의 채팅방'에 Ctrl+V(Mac: Cmd+V) 붙여넣으세요! 카톡으로 깔끔한 보고서가 도착하신 분, 손 번쩍 드세요! 전원 오늘 공식 수료입니다!"
       </div>
     </div>
 
     <!-- 대본 4 -->
     <div class="script-block">
       <div class="script-header">
-        <span class="script-action">[3부: 90~115분] 진짜 바이브 코딩 (Step 5 직접 수정) & 버퍼</span>
+        <span class="script-action">[3부: 90~115분] 진짜 바이브 코딩 (Step 4 직접 수정) & 버퍼</span>
         <span>행동: 수강생들이 직접 말로 수정하도록 격려</span>
       </div>
       <div class="script-body">
-        "순장님들, 지금까지는 제가 드린 프롬프트를 복사하셨죠? 이제 진짜 바이브 코딩을 해보겠습니다. <strong>내 말로 내가 원하는 것 딱 하나만 AI한테 시켜보는 겁니다. (Step 5)</strong><br>
+        "순장님들, 지금까지는 제가 드린 프롬프트를 복사하셨죠? 이제 진짜 바이브 코딩을 해보겠습니다. <strong>내 말로 내가 원하는 것 딱 하나만 AI한테 시켜보는 겁니다. (Step 4)</strong><br>
         '출석 체크하면 배경을 초록색으로 바꿔줘'도 좋고, '헤더에 오늘 출석 인원수가 보이게 해줘'도 좋습니다. 완벽한 문장 쓸 필요 없습니다. 친구에게 카톡 하듯이 편하게 지시해 보세요!<br><br>
-        (버퍼 시간 운영) 그리고 혹시 아직 Step 4에 머물러 계신 분들은 전혀 걱정하지 마세요. 제가 1:1로 봐드리고, 필요하시면 강사 완성본 링크를 바로 열어드리겠습니다."
+        (버퍼 시간 운영) 그리고 혹시 아직 Step 3에 머물러 계신 분들은 전혀 걱정하지 마세요. 제가 1:1로 봐드리고, 필요하시면 강사 완성본 링크를 바로 열어드리겠습니다."
       </div>
     </div>
 

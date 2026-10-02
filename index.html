@@ -564,6 +564,7 @@
     }
 
     .tag-must { background: #fee2e2; color: #991b1b; }
+    .tag-bonus { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
     .tag-goal { background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; }
     .tag-vibe { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
     .tag-mission { background: #dcfce7; color: #166534; }
@@ -1170,21 +1171,21 @@
       </div>
     </div>
 
-    <!-- Step 3: 기기간 데이터 전송/백업 링크 -->
-    <div class="step-section">
+    <!-- Step 2-1 (선택/보너스): 기기간 데이터 전송/백업 링크 -->
+    <div class="step-section" style="border: 1px dashed #a855f7; background: #faf5ff;">
       <div class="step-header">
         <div class="step-title-group">
-          <span class="step-tag tag-core">Step 3 (핵심 연동)</span>
+          <span class="step-tag tag-bonus">Step 2-1 (선택/보너스)</span>
           <span class="step-title">스마트폰 ↔ PC 1초 데이터 전송 (기기간 이사)</span>
         </div>
-        <span style="font-size: 13px; color: var(--text-muted);">소요 시간 약 12분</span>
+        <span style="font-size: 13px; color: #7e22ce; font-weight: 700;">필수 아님 / 필요한 분만 진행</span>
       </div>
       <div class="step-desc">
-        서버나 회원가입 없이, <strong>카톡 나에게 보내기 링크 한 번</strong>으로 PC에서 입력한 데이터를 스마트폰(또는 다른 PC)으로 1초 만에 그대로 이사시킵니다.
+        서버나 회원가입 없이, <strong>카톡 나에게 보내기 링크 한 번</strong>으로 PC에서 입력한 데이터를 스마트폰(또는 다른 PC)으로 1초 만에 그대로 이사시킵니다. (시간이 부족한 분은 바로 Step 3으로 넘어가셔도 좋습니다.)
       </div>
 
       <div class="prompt-box">
-        <div class="prompt-content" id="p3">현재 프로젝트의 기존 순원 목록 관리, 출석 체크, 기도제목 입력, 브라우저 로컬 자동 저장(localStorage) 기능을 100% 보존해줘.
+        <div class="prompt-content" id="p2-1">현재 프로젝트의 기존 순원 목록 관리, 출석 체크, 기도제목 입력, 브라우저 로컬 자동 저장(localStorage) 기능을 100% 보존해줘.
 이번 단계에서는 [기기간 데이터 전송 및 백업 링크 복사 기능]을 추가해줘.
 
 1. 화면 상단(헤더 아래 또는 컨트롤 영역)에 눈에 띄는 [📱 기기간 데이터 전송 링크 복사] 버튼을 만들어줘.
@@ -1196,19 +1197,19 @@
    - '#data=' 파라미터가 있다면, 그 안의 데이터를 디코딩/파싱하여 브라우저 로컬 저장소(localStorage)에 자동으로 덮어쓰기 저장하고 화면에 즉시 표시해줘.
    - 복원이 완료된 후에는 깔끔하게 URL 주소의 '#data=...' 뒷부분을 history.replaceState를 사용해 지워줘.
 4. 기존의 순원 추가/삭제 및 로컬 저장 기능은 절대 깨지지 않게 해줘.</div>
-        <button class="copy-btn" onclick="copyPrompt('p3', this)">📋 3단계 프롬프트 복사하기</button>
+        <button class="copy-btn" onclick="copyPrompt('p2-1', this)">📋 보너스 프롬프트 복사하기</button>
       </div>
 
-      <div class="checkpoint">
+      <div class="checkpoint" style="background: #f3e8ff; border-color: #c084fc; color: #6b21a8;">
         ✅ <strong>확인 미션:</strong> <code>[기기간 데이터 전송 링크 복사]</code>를 누르고, 카카오톡 '나와의 채팅방'에 보낸 뒤 스마트폰(또는 시크릿 창)에서 링크를 열었을 때 PC의 입력 데이터가 그대로 복원되어 뜨나요?
       </div>
     </div>
 
-    <!-- Step 4 (Graduation Goal) -->
+    <!-- Step 3 (Graduation Goal) -->
     <div class="step-section" style="border: 2px solid #f59e0b;">
       <div class="step-header">
         <div class="step-title-group">
-          <span class="step-tag tag-goal">★ Step 4 (오늘의 공식 수료 졸업선!)</span>
+          <span class="step-tag tag-goal">★ Step 3 (오늘의 공식 수료 졸업선!)</span>
           <span class="step-title">카톡용 문구 자동 생성 + 복사</span>
         </div>
         <span style="font-size: 13px; color: #b45309; font-weight: 700;">여기까지 성공하면 오늘 100점 졸업!</span>
@@ -1218,7 +1219,7 @@
       </div>
 
       <div class="prompt-box">
-        <div class="prompt-content" id="p4">현재 프로젝트의 모든 순원 데이터 관리, UI 레이아웃, 브라우저 로컬 자동 저장 로직을 100% 보존해줘.
+        <div class="prompt-content" id="p3">현재 프로젝트의 모든 순원 데이터 관리, UI 레이아웃, 브라우저 로컬 자동 저장 로직을 100% 보존해줘.
 이번 단계에서는 화면 하단에 [카카오톡용 문구 자동 생성 및 복사 기능]만 추가해줘.
 
 1. 화면 하단에 '카카오톡 공유 미리보기' 영역을 만들고, 그 안에 읽기 전용 텍스트 상자(readonly textarea)를 항상 눈에 보이게 배치해줘.
@@ -1227,7 +1228,7 @@
    - 버튼을 클릭하면 navigator.clipboard.writeText를 사용하여 카톡 양식 전문이 클립보드에 자동 복사되고 "복사 완료! 카톡에 붙여넣으세요"라는 토스트 알림을 띄워줘.
    - 만약 브라우저 보안 제약이나 모바일 환경으로 인해 자동 복사가 차단되더라도 에러로 멈추지 말고, 하단 텍스트 상자의 내용이 자동으로 전체 선택(select)되도록 처리한 뒤 "PC에서는 Ctrl+C(Mac: Cmd+C), 스마트폰에서는 길게 눌러 복사하세요"라고 안내해줘.
 3. 기존 순원 추가/삭제 및 저장 기능은 절대 건드리지 마.</div>
-        <button class="copy-btn" onclick="copyPrompt('p4', this)">📋 4단계 프롬프트 복사하기</button>
+        <button class="copy-btn" onclick="copyPrompt('p3', this)">📋 3단계 프롬프트 복사하기</button>
       </div>
 
       <div class="checkpoint" style="background: #fef3c7; border-color: #f59e0b; color: #92400e;">
@@ -1235,11 +1236,11 @@
       </div>
     </div>
 
-    <!-- Step 5: 진짜 바이브 코딩 (내 말로 직접 고치기) -->
+    <!-- Step 4: 진짜 바이브 코딩 (내 말로 직접 고치기) -->
     <div class="step-section">
       <div class="step-header">
         <div class="step-title-group">
-          <span class="step-tag tag-vibe">Step 5 (바이브 코딩 실전)</span>
+          <span class="step-tag tag-vibe">Step 4 (바이브 코딩 실전)</span>
           <span class="step-title">내 말로 원하는 기능 1개 직접 고쳐보기</span>
         </div>
         <span style="font-size: 13px; color: #1e40af; font-weight: 700;">진짜 바이브 코딩 체험!</span>
