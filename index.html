@@ -914,18 +914,146 @@
 
   <!-- Main Tab Navigation -->
   <nav class="main-tabs">
-    <button class="tab-btn active" id="btn-guide" onclick="switchTab('guide')">
-      🖥️ 1. AI Studio 화면 설명 가이드
+    <button class="tab-btn active" id="btn-vibe" onclick="switchTab('vibe')">
+      💡 1. 바이브 코딩이란? (3분 개념)
+    </button>
+    <button class="tab-btn" id="btn-guide" onclick="switchTab('guide')">
+      🖥️ 2. AI Studio 화면 설명 가이드
     </button>
     <button class="tab-btn" id="btn-practice" onclick="switchTab('practice')">
-      🚀 2. 실습 & 프롬프트 (메인 실습)
+      🚀 3. 실습 & 프롬프트 (메인 실습)
     </button>
   </nav>
 
   <!-- ========================================== -->
-  <!-- [탭 1] 🖥️ AI Studio 화면 설명 가이드       -->
+  <!-- [탭 1] 💡 바이브 코딩이란? (3분 개념)       -->
   <!-- ========================================== -->
-  <main id="tab-guide" class="tab-content active">
+  <main id="tab-vibe" class="tab-content active">
+
+    <!-- 1. 바이브 코딩 정의 카드 -->
+    <div style="background: white; border: 1px solid var(--border); border-radius: 18px; padding: 30px 28px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: #e0f2fe; color: #0369a1; padding: 5px 14px; border-radius: 20px; font-size: 16px; font-weight: 800; margin-bottom: 14px;">
+        ✨ 1. '바이브(Vibe)'라는 이름의 뜻
+      </div>
+      <h2 style="font-size: 26px; font-weight: 800; color: #0f172a; line-height: 1.4; margin-bottom: 14px;">
+        "Vibe는 '느낌, 분위기, 원하는 모습'을 뜻합니다"
+      </h2>
+      <p style="font-size: 19.5px; color: #334155; line-height: 1.75; margin-bottom: 0;">
+        컴퓨터의 복잡한 기술이나 어려운 규칙은 AI에게 모두 맡기고, 사람은 <strong>"내가 원하는 느낌과 목적"</strong>에만 집중한다는 뜻입니다.
+      </p>
+    </div>
+
+    <!-- 2. 인테리어 비유 카드 (핵심) -->
+    <div style="background: #fdfaf6; border: 2px solid #fdba74; border-radius: 18px; padding: 30px 28px; margin-bottom: 24px; box-shadow: 0 4px 14px rgba(251, 146, 60, 0.1);">
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: #ffedd5; color: #c2410c; padding: 5px 14px; border-radius: 20px; font-size: 16px; font-weight: 800; margin-bottom: 14px;">
+        🛋️ 2. 인테리어에 빗대어 보면 딱 이렇습니다
+      </div>
+      <h3 style="font-size: 24px; font-weight: 800; color: #9a3412; line-height: 1.4; margin-bottom: 14px;">
+        순장님은 '인테리어 의뢰인', AI는 '시공 전문가'입니다
+      </h3>
+      <p style="font-size: 19px; color: #431407; line-height: 1.75; margin-bottom: 20px;">
+        집 인테리어를 할 때, 순장님이 직접 도배를 하거나 타일을 붙이지 않습니다.<br>
+        인테리어 전문가에게 <strong>"거실은 아늑한 베이지 톤으로 해주시고, 식탁은 6인용으로 놓아주세요"</strong>라고 원하는 공간의 느낌과 구조만 말하면 전문가가 시공해 주는 것과 같습니다.
+      </p>
+      
+      <!-- 의뢰인 vs 전문가 박스 -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; background: white; padding: 20px; border-radius: 14px; border: 1px solid #fed7aa;">
+        <div>
+          <div style="font-size: 16px; font-weight: 800; color: #ea580c; margin-bottom: 6px;">👩‍💼 순장님의 역할 (인테리어 의뢰인)</div>
+          <div style="font-size: 18px; font-weight: 700; color: #1e293b; line-height: 1.6;">
+            "우리 순원 출석이 한눈에 들어오는 깔끔한 화면으로 만들어줘"
+          </div>
+          <div style="font-size: 15px; color: #64748b; margin-top: 4px;">➔ 원하는 목적과 화면의 느낌(Vibe)만 설명</div>
+        </div>
+        <div>
+          <div style="font-size: 16px; font-weight: 800; color: #0284c7; margin-bottom: 6px;">🤖 AI의 역할 (시공 전문가)</div>
+          <div style="font-size: 18px; font-weight: 700; color: #1e293b; line-height: 1.6;">
+            순장님의 말에 맞춰 실제 누르고 작동하는 화면을 제작
+          </div>
+          <div style="font-size: 15px; color: #64748b; margin-top: 4px;">➔ 기술적인 코딩과 버튼 배치는 AI가 전담</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 도구의 대전환 -->
+    <div style="background: white; border: 1px solid var(--border); border-radius: 18px; padding: 30px 28px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: #f3e8ff; color: #7e22ce; padding: 5px 14px; border-radius: 20px; font-size: 16px; font-weight: 800; margin-bottom: 14px;">
+        🔄 3. 도구의 대전환
+      </div>
+      <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; line-height: 1.4; margin-bottom: 14px;">
+        "기성품에 끼워 맞추기"에서 "우리 순 맞춤 집 짓기"로
+      </h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 14px;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px;">
+          <div style="font-size: 15px; font-weight: 700; color: #64748b; margin-bottom: 6px;">🧱 과거의 방식</div>
+          <p style="font-size: 17.5px; color: #334155; line-height: 1.65; margin: 0;">
+            남들이 만들어 놓은 기성품 도구(엑셀, 노션, 메모장)에 내 사역을 억지로 끼워 맞췄습니다. 내 마음에 100% 들지 않아도 참고 써야 했습니다.
+          </p>
+        </div>
+        <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 14px; padding: 18px;">
+          <div style="font-size: 15px; font-weight: 800; color: #16a34a; margin-bottom: 6px;">✨ 바이브 코딩 시대</div>
+          <p style="font-size: 17.5px; color: #14532d; line-height: 1.65; margin: 0;">
+            오직 <strong>'우리 순'만을 위한 맞춤 도구</strong>를 내가 직접 의뢰해서 만듭니다. 기술자가 아니라, <strong>순원들을 가장 사랑하고 사역을 잘 아는 순장님이 최고의 제작자</strong>입니다.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 3단계 과정 -->
+    <div style="background: white; border: 1px solid var(--border); border-radius: 18px; padding: 30px 28px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: #e0e7ff; color: #4338ca; padding: 5px 14px; border-radius: 20px; font-size: 16px; font-weight: 800; margin-bottom: 14px;">
+        🚶‍♀️ 4. 바이브 코딩이 진행되는 3단계 과정
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 14px;">
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 14px; padding: 20px;">
+          <div style="display: inline-block; background: #2563eb; color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 800; font-size: 16px; margin-bottom: 8px;">1</div>
+          <h4 style="font-size: 19.5px; font-weight: 800; color: #1e293b; margin-bottom: 8px;">원하는 모습 말하기</h4>
+          <p style="font-size: 16.5px; color: #475569; line-height: 1.6; margin: 0;">
+            머릿속 생각을 한국어로 편하게 이야기합니다.<br>
+            <span style="font-size: 14.5px; color: #2563eb; display: block; margin-top: 6px;">"순원 이름이 쭉 나오고, 이번 주 심방 여부를 한눈에 체크하고 싶어"</span>
+          </p>
+        </div>
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 14px; padding: 20px;">
+          <div style="display: inline-block; background: #2563eb; color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 800; font-size: 16px; margin-bottom: 8px;">2</div>
+          <h4 style="font-size: 19.5px; font-weight: 800; color: #1e293b; margin-bottom: 8px;">화면 확인하고 만져보기</h4>
+          <p style="font-size: 16.5px; color: #475569; line-height: 1.6; margin: 0;">
+            AI가 만들어준 화면을 오른쪽 스마트폰 미리보기 창에서 직접 눌러보고 입력해 봅니다.
+          </p>
+        </div>
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 14px; padding: 20px;">
+          <div style="display: inline-block; background: #2563eb; color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 800; font-size: 16px; margin-bottom: 8px;">3</div>
+          <h4 style="font-size: 19.5px; font-weight: 800; color: #1e293b; margin-bottom: 8px;">대화하며 다듬기</h4>
+          <p style="font-size: 16.5px; color: #475569; line-height: 1.6; margin: 0;">
+            "식탁 위치를 옮겨주세요" 하듯 카톡 대화하듯 편하게 살을 붙여 나갑니다.<br>
+            <span style="font-size: 14.5px; color: #2563eb; display: block; margin-top: 6px;">"다 좋은데, 오늘 날짜가 맨 위에 항상 보이게 해줘"</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 오늘 얻게 될 열매 & 다음 탭 버튼 -->
+    <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 1.5px solid #86efac; border-radius: 18px; padding: 26px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; margin-bottom: 28px;">
+      <div>
+        <h4 style="font-size: 21px; font-weight: 800; color: #14532d; margin-bottom: 6px;">🎁 오늘 실습으로 얻게 될 두 가지 열매</h4>
+        <p style="font-size: 17px; color: #166534; line-height: 1.6; margin: 0;">
+          ① <strong>사역:</strong> 카톡방을 위아래로 올려보며 기도제목과 출석을 정리하던 번거로움이 사라집니다.<br>
+          ② <strong>일터:</strong> 내일 회사에서도 "우리 팀 주간 업무 취합 화면 하나 만들어줘"라고 당당하게 지시할 수 있습니다.
+        </p>
+      </div>
+      <div>
+        <button onclick="switchTab('guide')" style="background: #2d5a43; color: white; border: none; padding: 14px 24px; border-radius: 12px; font-size: 18px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 12px rgba(45,90,67,0.3); display: inline-flex; align-items: center; gap: 8px;">
+          <span>다음: 2. 화면 가이드 보기</span>
+          <span>➔</span>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- [탭 2] 🖥️ AI Studio 화면 설명 가이드       -->
+  <!-- ========================================== -->
+  <main id="tab-guide" class="tab-content">
 
     <div style="background: white; border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;">
       <h3 style="font-size: 16px; color: var(--primary-dark); margin-bottom: 6px;">💡 실습 전 꼭 확인하세요!</h3>
@@ -1042,7 +1170,7 @@
 
     <div style="background: #fef2f2; border: 2px solid #ef4444; border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; font-size: 13.5px; line-height: 1.6; color: #991b1b;">
       <strong>⚠️ 스마트폰에서 "권한 없음(Restricted)" 에러가 뜨지 않게 하는 법:</strong><br>
-      우측 상단의 <code>[Share]</code>를 눌렀을 때, 아래 3장의 사진에 나온 순서대로 <strong>반드시 설정을 변경</strong>해야 내 스마트폰에서 로그인 없이 1초 만에 앱이 열립니다!
+      우측 상단의 <code>[Share]</code>를 눌렀을 때, 아래 3장의 사진에 나온 순서대로 <strong>반드시 설정을 변경</strong>해야 내 스마트폰에서 별도 로그인 없이 바로 앱이 열립니다!
     </div>
 
     <!-- 7. 공유시 공개설정 -->
@@ -1277,17 +1405,17 @@
       </div>
     </div>
 
-    <!-- Step 5 (보너스 실습): 스마트폰 ↔ PC 1초 데이터 전송 링크 -->
+    <!-- Step 5 (보너스 실습): 스마트폰 ↔ PC 데이터 간편 전송 링크 -->
     <div class="step-section" style="border: 2px dashed #8b5cf6; background: #faf5ff;">
       <div class="step-header">
         <div class="step-title-group">
           <span class="step-tag tag-bonus">Step 5 (보너스 실습)</span>
-          <span class="step-title">스마트폰 ↔ PC 1초 데이터 전송 (기기간 이사)</span>
+          <span class="step-title">스마트폰 ↔ PC 데이터 간편 전송 (기기간 이사)</span>
         </div>
         <span style="font-size: 13px; color: #7e22ce; font-weight: 700;">선택 미션 / 필요한 분만 도전!</span>
       </div>
       <div class="step-desc">
-        1~4단계를 모두 마치셨나요? 서버나 회원가입 없이, <strong>카톡 나에게 보내기 링크 한 번</strong>으로 PC에서 입력한 데이터를 스마트폰(또는 다른 PC)으로 1초 만에 그대로 이사시킵니다.
+        1~4단계를 모두 마치셨나요? 서버나 회원가입 없이, <strong>카톡 나에게 보내기 링크 한 번</strong>으로 PC에서 입력한 데이터를 스마트폰(또는 다른 PC)으로 간편하게 그대로 이사시킵니다.
       </div>
 
       <div class="prompt-box">
@@ -1442,7 +1570,11 @@
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-    if (tabName === 'guide') {
+    if (tabName === 'vibe') {
+      document.getElementById('btn-vibe').classList.add('active');
+      document.getElementById('tab-vibe').classList.add('active');
+      window.location.hash = '#vibe';
+    } else if (tabName === 'guide') {
       document.getElementById('btn-guide').classList.add('active');
       document.getElementById('tab-guide').classList.add('active');
       window.location.hash = '#guide';
@@ -1590,8 +1722,10 @@
 
     if (window.location.hash === '#practice') {
       switchTab('practice');
-    } else {
+    } else if (window.location.hash === '#guide') {
       switchTab('guide');
+    } else {
+      switchTab('vibe');
     }
 
     // Attach click events to all guide images
